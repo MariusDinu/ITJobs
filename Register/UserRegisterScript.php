@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +9,13 @@
 include "..\DB.php";
 
 
-session_start();
+
 /* preluam datele preluate din forma de pe pagina anterioara */
 $email=$_SESSION['inputEmailUserSession'];
 $_COOKIE=rand(1000,9999);
 echo $_COOKIE;
 $password=md5( $_SESSION['inputPasswordUserSession']);
-echo $password;
-echo $email;
+
 $phone=$_SESSION['inputPhoneUserSession'];
 
 $DB=new DB();
@@ -28,6 +28,7 @@ if($q->execute())
 <p>Introdu codul aici:</p>
 <input name='inputCodeCheck' id='inputCodeCheck'> </input>
 <input name='buttonCodeCheck' type='submit' ></div><?php
+
 }   
 else echo "Eroare Sql";
 
@@ -40,7 +41,6 @@ if(isset($_POST['buttonCodeCheck']))
 {
 if(isset($_POST['inputCodeCheck'])&&!empty($_POST['inputCodeCheck']))
          { echo "Cont activat!"; $condition=true; 
-           session_destroy();
         //header("Location: LoginUser.php");       
         }
 }
