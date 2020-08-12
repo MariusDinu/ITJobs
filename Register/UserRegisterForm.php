@@ -10,7 +10,7 @@ session_start();
 
 
 <h1>Register</h1>
-<form  method="post" action="UserRegisterScript.php">
+<form  method="post" >
 <p>Email:</p>
 <input id="inputEmailUser" name="inputEmailUser" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required></input>
 <p id="validateEmailBD" ></p>
@@ -38,6 +38,8 @@ if(isset($_POST['inputSubmitRegister']))
    $_SESSION['inputEmailUserSession']=$_POST['inputEmailUser'];
    $_SESSION['inputPasswordUserSession']=$_POST['inputPasswordUser'];
    $_SESSION['inputPhoneUserSession']=$_POST['inputPhoneUser'];
+   $_SESSION['code']=rand(1000,9999);
+   header("Location:UserRegisterScript.php");
   print $_SESSION['inputPasswordUserSession'];
   
 }
