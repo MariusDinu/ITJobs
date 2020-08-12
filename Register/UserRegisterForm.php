@@ -4,7 +4,8 @@
 <title>Register</title>
 </head>
 <body>
-
+<?php
+?>
 
 <h1>Register</h1>
 <form  method="post" action="UserRegisterScript.php">
@@ -28,10 +29,18 @@
 
 <input type="submit" id="inputSubmitRegister" onclick="checkInDB()" name="inputSubmitRegister" value="inputSubmitRegister">
 </form>
+<?php session_start();
+if(isset($_POST['inputSubmitRegister']))
+{
+    
+   $_SESSION['inputEmailUserSession']=$_POST['inputEmailUser'];
+   $_SESSION['inputPasswordUserSession']=$_POST['inputPasswordUser'];
+   $_SESSION['inputPhoneUserSession']=$_POST['inputPhoneUser'];
+  print $_SESSION['inputPasswordUserSession'];
 
+}
 
-
-
+?>
 </body>
 <script>
 
