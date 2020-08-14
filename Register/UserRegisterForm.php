@@ -13,14 +13,14 @@ session_start();
 <form  method="post" >
 <p>Email:</p>
 <input id="inputEmailUser" name="inputEmailUser" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required></input>
-<p id="validateEmailBD" ></p>
+<p id="validateEmailBD" name="validateEmailBD"></p>
 <div id="rulesEmail" style="display:none" >Litere,cifre,@,com</div>
 <p>Password:</p>
 <input id="inputPasswordUser" name="inputPasswordUser" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required></input>
 
 <p>PhoneNumber:</p>
-<select id="PrefixNumber">
-<option value="+40">+40</option>
+<select id="PrefixNumber" name="inputPrefixPhoneUser">
+<option value="40">+40</option>
 </select>
 <input id="inputPhoneUser" name="inputPhoneUser" maxlength="9" pattern="[0-9]+" required></input>
 
@@ -38,9 +38,10 @@ if(isset($_POST['inputSubmitRegister']))
    $_SESSION['inputEmailUserSession']=$_POST['inputEmailUser'];
    $_SESSION['inputPasswordUserSession']=$_POST['inputPasswordUser'];
    $_SESSION['inputPhoneUserSession']=$_POST['inputPhoneUser'];
+   $_SESSION['inputPrefixPhoneUserSession']=$_POST['inputPrefixPhoneUser'];
    $_SESSION['code']=rand(1000,9999);
    header("Location:UserRegisterScript.php");
-  print $_SESSION['inputPasswordUserSession'];
+   print $_SESSION['inputPasswordUserSession'];
   
 }
 
@@ -58,7 +59,7 @@ function checkInDB(){
     xmlhttp.open("POST", "SearchUser.php", true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send("email="+email);
-xmlhttp.onload=function(){
+    xmlhttp.onload=function(){
     if(this.response=="true"){
       document.getElementById("validateEmailBD").innerHTML="Emailul este viabil!";
     }
