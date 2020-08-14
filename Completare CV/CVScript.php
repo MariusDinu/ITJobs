@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,26 +9,24 @@
 <body>
 
 <?php
-$limbaje=$_POST["limbaje"];				//aici preiau datele din formular.. o sa modific cu session cand va fi nevoie..
-$tehnologii=$_POST["tehnologii"];		//it's just for testing
-$joburi=$_POST["joburi"];				//cand refac aici o sa pun si validari/restrictii
-$server="localhost";
-$username="root";
-$password="";
-$DB="itlabs";
-$conn=new mysqli($server,$username,$password,$DB);		//fac conexiunea la baza de date
+include "DB.php";
+$DB=new DB();
+$limbaje=$_SESSION["limbaje"];				//aici preiau datele din formular.. o sa modific cu session cand va fi nevoie..
+$tehnologii=$_SESSION["tehnologii"];		//it's just for testing
+$joburi=$_SESSION["joburi"];				//cand refac aici o sa pun si validari/restrictii
+$expLimbaj=$_SESSION["expLimbaj"];
+$expJob=$_SESSION["expJob"];
 
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error); 		//verific conexiunea
-}
+$sql="INSERT INTO `cv`(`limbaje`,`expLimbaj`,`joburi`,`expJob`,`tehnologii`) VALUES ('$limbaje','$expLimbaj','$joburi','$expJob','$tehnologii')";
 
-$sql="INSERT INTO `CV`(`limbaje`,`joburi`,`tehnologii`) VALUES ('$limbaje','$joburi','$tehnologii')";
-if ($conn->query($sql) === TRUE) {
-  echo "Ai completat CV-ul cu success!";
+
+$q=$DB::obtine_conexiune()->prepare($sql);	//fac conexiunea la baza de date
+
+
+if ($q->execute()) {
+  echo "Ai completat CV-ul cu success!"; session_destroy();
 } else {
-  echo "Eroare: " . $sql . "<br>" . $conn->error;			
+  echo "Eroare.";		
 }
-
-$conn->close();
 ?>
 </html>
