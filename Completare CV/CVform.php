@@ -40,6 +40,11 @@ function test(){
 <br>
 <input type="submit" name="submit" value="Completează CV">
 </form>
+<?php
+if()
+
+
+?>
 </body>
 
 
