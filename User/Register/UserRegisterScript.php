@@ -7,9 +7,9 @@
 </head>
 <body>
 <?php
-include "..\DB.php";
+include "..\..\DB.php";
 use GuzzleHttp\Client;
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 /* preluam datele preluate din forma de pe pagina anterioara */
 $email=$_SESSION['inputEmailUserSession'];
@@ -88,7 +88,7 @@ if(isset($_POST['buttonCodeCheck']))
 if(isset($_POST['inputCodeCheck'])&&!empty($_POST['inputCodeCheck']))
          {   if($q->execute()){} else {echo "Eroare baza de date.";}
             if($_POST['inputCodeCheck']!=$code) /* daca codurile sunt la fel ne redirectioneaza catre pagina de login si se sterg salvarile */
-               { echo "Cod gresit! Reincearca!"; } else {header("Location: LoginUser.php"); session_destroy();  }    
+               { echo "Cod gresit! Reincearca!"; } else {header("Location: ..\Login\LoginUser.php"); session_destroy();  }    
         }
 }
 
