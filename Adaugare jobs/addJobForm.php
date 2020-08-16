@@ -10,7 +10,6 @@ session_start();
 <body >
 
 
-<h1>Completare CV</h1>
 <form  method="post" >
 <p>Titlu job:</p><br>
 <input type="text" name="job" id="job">
