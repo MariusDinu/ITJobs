@@ -46,8 +46,6 @@ CREATE TABLE `jobs` (
 -- Dumping data for table `jobs`
 --
 
-INSERT INTO `jobs` (`id_jobs`, `Titlu`, `Oras`, `Nivel_studii`, `Departament`, `Salariu`, `Nivel_cariera`, `Tip`, `Permis`, `Candidatul_ideal`, `Descriere_job`, `Descriere_companie`) VALUES
-(1, 'x', '2', '2', '2', '255', '2', 'c', 'c', '2', '2', '2');
 
 --
 -- Indexes for dumped tables
