@@ -38,26 +38,6 @@ CREATE TABLE `cv` (
 -- Dumping data for table `cv`
 --
 
-INSERT INTO `cv` (`id`, `limbaje`, `joburi`, `tehnologii`) VALUES
-(1, 'php - nivel mediu', 'it labs - full stack developer - 2 ani', 'Django'),
-(2, 'c++ - avansat', 'student', 'Django'),
-(5, '', '', ''),
-(6, '', '', ''),
-(7, '', '', ''),
-(8, '', '', ''),
-(9, '', '', ''),
-(10, '', '', ''),
-(11, '', '', ''),
-(12, '', '', ''),
-(13, '', '', ''),
-(14, '', '', ''),
-(15, '', '', ''),
-(16, '', '', ''),
-(17, '', '', ''),
-(18, '', '', ''),
-(19, '', '', ''),
-(20, '', '', ''),
-(21, '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -77,7 +57,7 @@ ALTER TABLE `cv`
 -- AUTO_INCREMENT for table `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
