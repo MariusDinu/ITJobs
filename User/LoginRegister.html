@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    <title> Login and Register </title>
+    <link rel="stylesheet" href="LoRe-style.css">
+</head>
+
+<body>
+    <div class="screen">
+        <div class="box">
+            <div class="button">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Login</button>
+                <button type="button" class="toggle-btn" onclick="register()">Register</button>
+            </div>
+            <form id="login" class="input">
+                <br></br>
+                <input type="text" class="input-field" placeholder="E-mail" required>
+                <input type="password" class="input-field" placeholder="Password" required>
+                <br></br>
+                <input type="checkbox" class="check-box"><span> Remember Password</span>
+                <br><br></br>
+                </br>
+                <button class="submit-btn">Login</button>
+            </form>
+            <form id="register" class="input">
+                <br></br>
+                <input id="EmailUserRegister" type="text" onkeyup="checkEmail()" class="input-field" placeholder="E-mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required>
+                <p id="errorEmail"></p>
+                <input id="PasswordUserRegister" type="password" class="input-field" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                <input id="ConfirmPasswordUserRegister" onkeyup="checkPassword()" type="password" class="input-field" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                <p id="errorPassword" value="0"></p>
+                <input id="PhoneUserRegister" type="text" class="input-field" placeholder="PhoneNumber" maxlength="9" pattern="[0-9]+" required> <br></br>
+                <input type="checkbox" class="check-box"><span>  I agree to the terms and conditions</span>
+                <br></br><br></br>
+                <p id="errorRegister"></p>
+                <button class="submit-btn" onclick="registerUser()">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn")
+
+        function register() {
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+            z.style.background = "linear-gradient(to left, #ff9900, #fff)";
+        }
+
+        function login() {
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0";
+            z.style.background = "linear-gradient(to right, #ff9900, #fff)";
+        }
+    </script>
+    <script></script>
+    <script>
+        function checkEmail() {
+            var emailScript = document.getElementById("EmailUserRegister").value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "SearchUser.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("email=" + emailScript);
+            xmlhttp.onload = function() {
+                console.log(this.response);
+                if (this.response == "true") {
+                    document.getElementById("errorEmail").innerHTML = "";
+                    document.getElementById("errorEmail").value = 0;
+                } else {
+                    document.getElementById("errorEmail").innerHTML = "Acest email este deja inregistrat!";
+                    document.getElementById("errorEmail").value = 1;
+                }
+
+            }
+        }
+
+        function checkPassword() {
+            var pass = document.getElementById("PasswordUserRegister").value;
+            var confirmPass = document.getElementById("ConfirmPasswordUserRegister").value;
+            if (pass == confirmPass) {
+                document.getElementById("errorPassword").innerHTML = "";
+                document.getElementById("errorPassword").value = 0;
+            } else {
+                document.getElementById("errorPassword").innerHTML = "Parolele nu se potrivesc";
+                document.getElementById("errorPassword").value = 1;
+            }
+
+        }
+
+        function registerUser() {
+            var email = document.getElementById("EmailUserRegister").value;
+            var password = document.getElementById("PasswordUserRegister").value;
+            var phone = document.getElementById("PhoneUserRegister").value;
+            //var prefix = document.getElementById("PrefixUserRegister").value;
+            var confirmPass = document.getElementById("errorPassword").value;
+            var confirmEmail = document.getElementById("errorEmail").value;
+            if (confirmPass == 0 && confirmEmail == 0) {
+                document.getElementById("errorRegister").innerHTML = "";
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "UserRegister.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send("email=" + email + "&password=" + password + "&phone=+40" + phone);
+                xmlhttp.onload = function() {
+                    console.log(this.response);
+                    if (this.response == "true") {
+                        alert("true");
+                    } else {
+                        alert("false");
+                    }
+
+                }
+
+            } else {
+                document.getElementById("errorRegister").innerHTML = "Rezolva problemele din formular!";
+            }
+
+            event.preventDefault();
+        }
+
+        function loginUser() {}
+    </script>
+</body>
+
+</html>
