@@ -31,7 +31,10 @@
                 <input id="PasswordUserRegister" type="password" class="input-field" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 <input id="ConfirmPasswordUserRegister" onkeyup="checkPassword()" type="password" class="input-field" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 <p id="errorPassword" value="0"></p>
-                <input id="PhoneUserRegister" type="text" class="input-field" placeholder="PhoneNumber" maxlength="9" pattern="[0-9]+" required> <br></br>
+                <input id="PhoneUserRegister" type="text" class="input-field" placeholder="PhoneNumber" maxlength="9" pattern="[0-9]+" required>
+                <p id="errorPhone"></p>
+                <br>
+                </br>
                 <!--<input type="checkbox" class="check-box"><span>  I agree to the terms and conditions</span>-->
                 <br></br><br></br>
                 <p id="errorRegister"></p>
@@ -156,7 +159,7 @@
                 console.log(this.response);
                 if (this.response == "true") {
 
-                    window.location.href = "UserPage.html";
+                    window.location.href = "UserPage.php";
                     document.getElementById("errorLogin").innerHTML = "";
                 } else {
                     document.getElementById("errorLogin").innerHTML = "Parola sau email incorect!";
