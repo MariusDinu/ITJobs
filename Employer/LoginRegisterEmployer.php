@@ -12,19 +12,19 @@
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">Login</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
- </div>
+</div>
 
 <form  id="register" class="input" method="post" action="" enctype="multipart/form-data">
 <p> Company Name:</p>
 <input class="input-field" type="text" id="inputNumeFirma" name="inputNumeFirma" required>
 <br>
 <p> Email:</p>
-<input class="input-field" onkeyup="checkEmail()" type="text" id="EmailEmployerRegister" name="EmailEmployerRegister" required>
+<input class="input-field" onkeyup="checkEmail()" type="text" id="EmailEmployerRegister" name="EmailEmployerRegister" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required>
 <p id="errorEmail"></p>
 <p> Password:</p>
-<input class="input-field" type="text" id="PasswordEmployerRegister" name="PasswordEmployerRegister" required>
+<input class="input-field" type="text" id="PasswordEmployerRegister" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="PasswordEmployerRegister" required>
 <p> Confirm Password:</p>
-<input class="input-field" onkeyup="checkPassword()" type="text" id="ConfirmPasswordEmployerRegister" name="ConfirmPasswordEmployerRegister" required>
+<input class="input-field" onkeyup="checkPassword()" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="text" id="ConfirmPasswordEmployerRegister" name="ConfirmPasswordEmployerRegister" required>
 <p id='errorPassword'></p>
 <p> PhoneNumber:</p>
 <input class="input-field" type="text" id="PhoneEmployerRegister" name="PhoneEmployerRegister" required>
@@ -46,8 +46,9 @@
 
 <input type="file" name="fileToUpload" id="file" multiple>
 <p id="errorRegister"></p>
-<button class='submit-btn' type="submit" name='submitFirma'>Register</button>
+<button class='submit-btn' type="submit" name='submitFirma' onclick="registerEmployer()">Register</button>
 </form>
+
 <form id="login" class="input">
                 <br></br>
                 <input id="EmailUserLogin" type="text" class="input-field" placeholder="E-mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required>
@@ -57,14 +58,16 @@
                 <br><br></br>
                 </br>
                 <p id="errorLogin"></p>
-                <button class="submit-btn" onclick="loginUser()">Login</button>
-            </form>
+                <button class="submit-btn" onclick="loginEmployer()">Login</button>
+</form>
+
+</div>
 <div id="checkCodePhone" class="box" style="display:none">
             <form id="checkCode" class='input'>
                 <input id="inputCheckCode" class="input-field" maxlength="4" pattern="[0-9]+" required>
                 <button class="submit-btn" onclick="checkCode()">Check Code</button>
-                <button class="submit-btn" onclick="resendCode()">Send code again</button> </form>
-</div>
+                <button class="submit-btn" onclick="resendCode()">Send code again</button> 
+              </form>
 </div>
 </div>
 
@@ -209,7 +212,7 @@ function checkCode() {
 
             event.preventDefault();
         }
-        function registerUser() {
+        function registerEmployer() {
             var email = document.getElementById("EmailEmployerRegister").value;
             var password = document.getElementById("PasswordEmployerRegister").value;
             var phone = document.getElementById("PhoneEmployerRegister").value;
@@ -221,7 +224,7 @@ function checkCode() {
                 document.getElementById("loginRegisterBox").style.display = "none";
                 document.getElementById("checkCodePhone").style.display = "block";
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "SendSmsUserRegister.php", true);
+                xmlhttp.open("POST", "../User/SendSmsUserRegister.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send("phone=" + phone);
                 xmlhttp.onload = function() {
@@ -236,6 +239,27 @@ function checkCode() {
 
             event.preventDefault();
         }
+        function loginEmployer() {
+            var emailLogin = document.getElementById("EmailEmployerLogin").value;
+            var passwordLogin = document.getElementById("PasswordEmployerLogin").value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "EmployerLogin.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("email=" + emailLogin + "&password=" + passwordLogin);
+            xmlhttp.onload = function() {
+                console.log(this.response);
+                if (this.response == "true") {
+
+                    window.location.href = "EmployerPage.php";
+                    document.getElementById("errorLogin").innerHTML = "";
+                } else {
+                    document.getElementById("errorLogin").innerHTML = "Parola sau email incorect!";
+                }
+            }
+            event.preventDefault();
+
+        }
+
 </script>
 </body>
 
