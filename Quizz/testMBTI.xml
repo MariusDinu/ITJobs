@@ -3,200 +3,200 @@
      <item>
         <question index="1" >Încercaţi să răspundeţi la e-mailuri cât mai curând posibil şi nu suportaţi să aveţi inboxul deranjat.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="2" >Vi se pare dificil să vă prezentaţi altor persoane.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="3" >Adeseori vă adânciţi aşa de mult în gânduri încât ignoraţi sau uitaţi ce se întâmplă în jur.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="4" >Puteţi să vă relaxaţi şi să vă concentraţi cu uşurinţă, chiar dacă există un anumit grad de presiune.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="5" >De obicei nu începeţi o conversaţie.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="6" >Rareori faceţi ceva din pură curiozitate.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="7" >Vă simţiţi superior celorlalţi.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="8" >A fi organizat/ă este mai important pentru dumneavoastră decât a fi adaptabil/ă.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="9" >De obicei sunteţi foarte motivat/ă şi energic/ă.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="10" >Câştigarea unei dezbateri contează mai puţin decât să nu supăraţi pe nimeni.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="11" >Adeseori aveţi senzaţia că trebuie să daţi explicaţii altora.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="12" >Locuinţa şi locul unde lucraţi sunt destul de ordonate.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="13" >Nu vă deranjează să vă aflaţi în centrul atenţiei.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="14" >Vă consideraţi mai mult practic/ă decât creativ/ă.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="15" >Oamenii vă deranjează rar.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="16" >De obicei faceţi planuri de călătorie bine planificate.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="17" >De obicei este dificil să vă raportaţi la sentimentele altora.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="18" >Vă puteţi schimba dispoziţia foarte rapid.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="19" >Într-o discuţie, adevărul trebuie să fie mai important decât sentimentele oamenilor.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="20" >Rareori vă gândiţi la modul în care acţiunile dumneavoastră afectează alte persoane.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="21" >Stilul dumneavoastră de lucru seamănă mai mult cu nişte vârfuri de energie aleatoare decât cu o abordare metodică şi organizată.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="22" >Sunteţi adeseori invidios/invidioasă pe alţii.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="23" >Cea mai importantă parte a fiecărui proiect este capacitatea de a întocmi un plan şi respectarea acestuia.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="24" >Atunci când vă plimbaţi prin natură sunteţi adeseori pierdut/ă în gânduri.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 
      <item>
         <question index="25" >Ca părinte aţi prefera să vă crească copilul mai debrabă bun decât inteligent.</question>
         <answer>Sunt de acord</answer>
-        <answer>Partial de acord</answer>
-        <answer>Nu stiu ce sa raspund</answer>
-        <answer>Nu sunt de acord</answer>
+        <answer2>Partial de acord</answer2>
+        <answer3>Nu stiu ce sa raspund</answer3>
+        <answer4>Nu sunt de acord</answer4>
     </item>
 </items>
