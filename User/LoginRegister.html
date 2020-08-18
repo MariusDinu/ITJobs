@@ -7,7 +7,7 @@
 
 <body>
     <div class="screen">
-        <div class="box">
+        <div id="loginRegisterBox" class="box">
             <div class="button">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">Login</button>
@@ -15,13 +15,14 @@
             </div>
             <form id="login" class="input">
                 <br></br>
-                <input type="text" class="input-field" placeholder="E-mail" required>
-                <input type="password" class="input-field" placeholder="Password" required>
+                <input id="EmailUserLogin" type="text" class="input-field" placeholder="E-mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required>
+                <input id="PasswordUserLogin" type="password" class="input-field" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 <br></br>
                 <input type="checkbox" class="check-box"><span> Remember Password</span>
                 <br><br></br>
                 </br>
-                <button class="submit-btn">Login</button>
+                <p id="errorLogin"></p>
+                <button class="submit-btn" onclick="loginUser()">Login</button>
             </form>
             <form id="register" class="input">
                 <br></br>
@@ -31,11 +32,17 @@
                 <input id="ConfirmPasswordUserRegister" onkeyup="checkPassword()" type="password" class="input-field" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 <p id="errorPassword" value="0"></p>
                 <input id="PhoneUserRegister" type="text" class="input-field" placeholder="PhoneNumber" maxlength="9" pattern="[0-9]+" required> <br></br>
-                <input type="checkbox" class="check-box"><span>  I agree to the terms and conditions</span>
+                <!--<input type="checkbox" class="check-box"><span>  I agree to the terms and conditions</span>-->
                 <br></br><br></br>
                 <p id="errorRegister"></p>
                 <button class="submit-btn" onclick="registerUser()">Register</button>
             </form>
+        </div>
+        <div id="checkCodePhone" class="box" style="display:none">
+            <form id="checkCode" class='input'>
+                <input id="inputCheckCode" class="input-field" maxlength="4" pattern="[0-9]+" required>
+                <button class="submit-btn" onclick="checkCode()">Check Code</button>
+                <button class="submit-btn" onclick="resendCode()">Send code again</button> </form>
         </div>
     </div>
 
@@ -60,6 +67,11 @@
     </script>
     <script></script>
     <script>
+        var code = 0;
+        var email;
+        var password;
+        var phone;
+
         function checkEmail() {
             var emailScript = document.getElementById("EmailUserRegister").value;
             var xmlhttp = new XMLHttpRequest();
@@ -92,6 +104,19 @@
 
         }
 
+        function resendCode() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "SendSmsUserRegister.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("phone=" + phone);
+            xmlhttp.onload = function() {
+                var codeCopy = this.response;
+                setCode(codeCopy);
+            }
+            event.preventDefault();
+        }
+
+
         function registerUser() {
             var email = document.getElementById("EmailUserRegister").value;
             var password = document.getElementById("PasswordUserRegister").value;
@@ -101,19 +126,16 @@
             var confirmEmail = document.getElementById("errorEmail").value;
             if (confirmPass == 0 && confirmEmail == 0) {
                 document.getElementById("errorRegister").innerHTML = "";
-
+                document.getElementById("loginRegisterBox").style.display = "none";
+                document.getElementById("checkCodePhone").style.display = "block";
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "UserRegister.php", true);
+                xmlhttp.open("POST", "SendSmsUserRegister.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send("email=" + email + "&password=" + password + "&phone=+40" + phone);
+                xmlhttp.send("phone=" + phone);
                 xmlhttp.onload = function() {
-                    console.log(this.response);
-                    if (this.response == "true") {
-                        alert("true");
-                    } else {
-                        alert("false");
-                    }
-
+                    var codeCopy = this.response;
+                    setCode(codeCopy);
+                    setEmailPassPhone(email, password, phone);
                 }
 
             } else {
@@ -123,7 +145,51 @@
             event.preventDefault();
         }
 
-        function loginUser() {}
+        function loginUser() {
+            var emailLogin = document.getElementById("EmailUserLogin").value;
+            var passwordLogin = document.getElementById("PasswordUserLogin").value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "UserLogin.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("email=" + emailLogin + "&password=" + passwordLogin);
+            xmlhttp.onload = function() {
+                console.log(this.response);
+                if (this.response == "true") {
+
+                    window.location.href = "UserPage.html";
+                    document.getElementById("errorLogin").innerHTML = "";
+                } else {
+                    document.getElementById("errorLogin").innerHTML = "Parola sau email incorect!";
+                }
+            }
+            event.preventDefault();
+
+        }
+
+        function setCode(codeForCheck) {
+            code = codeForCheck;
+        }
+
+        function setEmailPassPhone(emailCopy, passCopy, phoneCopy) {
+            email = emailCopy;
+            password = passCopy;
+            phone = phoneCopy;
+        }
+
+        function checkCode() {
+            var codeFromInput = document.getElementById("inputCheckCode").value;
+            if (codeFromInput == code) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "UserRegister.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
+                xmlhttp.onload = function() {
+                    window.location.href = "LoginRegister.html";
+                }
+            }
+
+            event.preventDefault();
+        }
     </script>
 </body>
 
