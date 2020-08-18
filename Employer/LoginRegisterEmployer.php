@@ -27,7 +27,7 @@
 <input class="input-field" onkeyup="checkPassword()" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="text" id="ConfirmPasswordEmployerRegister" name="ConfirmPasswordEmployerRegister" required>
 <p id='errorPassword'></p>
 <p> PhoneNumber:</p>
-<input class="input-field" type="text" id="PhoneEmployerRegister" name="PhoneEmployerRegister" required>
+<input class="input-field" type="text" maxlenght="9" pattern="[0-9]+" id="PhoneEmployerRegister" name="PhoneEmployerRegister" required>
 
 <p> Company Site:</p>
 <input class="input-field" type="text" id="inputSiteFirma" name="inputSiteFirma" required>
@@ -36,35 +36,37 @@
 <input class="input-field" type="text" id="limbajeFirma" name="limbajeFirma" required>
 
 <p>C.U.I.:</p>
-<input class="input-field" type="text" id="cuiFirma" name="cuiFirma" required>
+<input class="input-field" type="text" id="cuiFirma" maxlenght="9" pattern="[0-9]+" name="cuiFirma" required>
 <br>
 <p>C.I.F.:</p>
-<input class="input-field" type="text" id="cifFirma" name="cifFirma" required>
+<input class="input-field" type="text" id="cifFirma" maxlenght="9" pattern="[0-9]+" name="cifFirma" required>
 <p> Company description:</p>
 <input class="input-field" type="text" id="tehnologii" name="tehnologii" required>
 <br>
 
-<input type="file" name="fileToUpload" id="file" multiple>
+<input type="file" name="file" id="file" multiple>
 <p id="errorRegister"></p>
 <button class='submit-btn' type="submit" name='submitFirma' onclick="registerEmployer()">Register</button>
 </form>
 
 <form id="login" class="input">
+  <p id="accountDone"><?php if(isset($_GET['succes'])==1) echo "Cont creat cu succes!";?></p>
                 <br></br>
-                <input id="EmailUserLogin" type="text" class="input-field" placeholder="E-mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required>
-                <input id="PasswordUserLogin" type="password" class="input-field" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                <input id="EmailEmployerLogin" type="text" class="input-field" placeholder="E-mail" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" required>
+                <input id="PasswordEmployerLogin" type="password" class="input-field" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 <br></br>
                 <input type="checkbox" class="check-box"><span> Remember Password</span>
                 <br><br></br>
                 </br>
                 <p id="errorLogin"></p>
-                <button class="submit-btn" onclick="loginEmployer()">Login</button>
+                <button  class="submit-btn" onclick="loginEmployer()">Login</button>
 </form>
 
 </div>
 <div id="checkCodePhone" class="box" style="display:none">
             <form id="checkCode" class='input'>
                 <input id="inputCheckCode" class="input-field" maxlength="4" pattern="[0-9]+" required>
+                <p id="errorCode"></p>
                 <button class="submit-btn" onclick="checkCode()">Check Code</button>
                 <button class="submit-btn" onclick="resendCode()">Send code again</button> 
               </form>
@@ -123,6 +125,9 @@ if ($uploadOk == 0) {
 
 ?>
 <script>
+  
+  </script>
+<script>
         var x = document.getElementById("login");
         var y = document.getElementById("register");
         var z = document.getElementById("btn")
@@ -168,6 +173,23 @@ function checkEmail(){
 
 
 }
+function uploadFile(email){
+          const myForm=document.getElementById("register");
+          const inpFile=document.getElementById("file");
+
+        
+          
+ const endpoint="../Employer/upload.php";
+          const formData=new FormData();
+
+          console.log(inpFile.files);
+          formData.append("file",inpFile.files[0]);
+          formData.append("user",email);
+          fetch(endpoint,{method:"post",body:formData}).catch(console.error);
+  event.preventDefault();
+
+  }
+       
 function checkPassword(){
   var pass = document.getElementById("PasswordEmployerRegister").value;
             var confirmPass = document.getElementById("ConfirmPasswordEmployerRegister").value;
@@ -201,18 +223,26 @@ function setCode(codeForCheck) {
 function checkCode() {
             var codeFromInput = document.getElementById("inputCheckCode").value;
             if (codeFromInput == code) {
+              document.getElementById('errorCode').innerHTML="";
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.open("POST", "EmployerRegister.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
                 xmlhttp.onload = function() {
-                    window.location.href = "LoginRegisterEmployer.php";
+                    window.location.href = "LoginRegisterEmployer.php?succes=1"; 
                 }
+                
+            }
+            else {
+document.getElementById('errorCode').innerHTML="Cod incorect!";
+
             }
 
             event.preventDefault();
         }
-        function registerEmployer() {
+        function registerEmployer() 
+          {
+            
             var email = document.getElementById("EmailEmployerRegister").value;
             var password = document.getElementById("PasswordEmployerRegister").value;
             var phone = document.getElementById("PhoneEmployerRegister").value;
@@ -230,7 +260,7 @@ function checkCode() {
                 xmlhttp.onload = function() {
                     var codeCopy = this.response;
                     setCode(codeCopy);
-                    setEmailPassPhone(email, password, phone);
+                    setEmailPassPhone(email, password, phone);uploadFile(email);
                 }
 
             } else {
@@ -240,8 +270,11 @@ function checkCode() {
             event.preventDefault();
         }
         function loginEmployer() {
+            document.getElementById("accountDone").innerHTML="";
             var emailLogin = document.getElementById("EmailEmployerLogin").value;
             var passwordLogin = document.getElementById("PasswordEmployerLogin").value;
+            console.log(emailLogin);
+            console.log(passwordLogin);
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "EmployerLogin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
