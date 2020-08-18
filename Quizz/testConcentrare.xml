@@ -1,82 +1,82 @@
 <items>
     
     <item>
-        <question index="1" >Ceilalti ma intrerup tot timpul. </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="1" >Ceilalți mă întrerup tot timpul. </question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
      <item>
-        <question index="2" >Atunci cand sunt intrerupt imi este greu sa revin la ceea ce faceam. </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="2" >Atunci când sunt întrerupt îmi este greu să revin la ceea ce făceam. </question>
+       <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
      <item>
-        <question index="3" >Atunci cand cineva ma intrerupe imi este greu sa-i spun sa ma lase sa revin la ceea ce lucram.</question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="3" >Atunci când cineva mă întrerupe îmi este greu să-i spun să mă lase să revin la ceea ce lucram.</question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="4" >Mi se intampla frecvent sa imi fie distrasa atentia.</question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="4" >Mi se întâmplă frecvent să îmi fie distrasă atenția.</question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="5" >Imi e greu sa ma concentrez. </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="5" >Îmi e greu să mă concentrez. </question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="6" >Deseori le cer celorlalti sa repete ce au spus/ </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="6" >Deseori le cer celorlalți să repete ce au spus/ </question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="7" >Visez cu ochii deschisi. </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="7" >Visez cu ochii deschiși. </question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="8" >La sfarsitul zilei ma simt adesea frustrat, deoarece nu am reusit sa duc ceva pana la capat. </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="8" >La sfârșitul zilei mă simt adesea frustrat, deoarece nu am reusit să duc ceva până la capăt. </question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="9" >Ma simt adesea imprastiat si ineficient. </question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="9" >Mă simt adesea împrăștiat și ineficient. </question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 
     <item>
-        <question index="10" >Cand cineva vine in biroul meu se simte foarte confortabil.</question>
-        <answer >Total adevarat</answer>
-        <answer>Partial adevarat</answer>
-        <answer>Partial fals</answer>
-        <answer>Total fals</answer>
+        <question index="10" >Când cineva vine în biroul meu se simte foarte confortabil.</question>
+        <answer >Total adevărat</answer>
+        <answer2>Parțial adevărat</answer2>
+        <answer3>Parțial fals</answer3>
+        <answer4>Total fals</answer4>
     </item>
 </items>
