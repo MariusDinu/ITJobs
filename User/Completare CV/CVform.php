@@ -11,11 +11,11 @@ session_start();
 
     */
 function test(){
-  var items = Array("Exemplu: PHP - nivel mediu","Exemplu: C++ - avansat", "Exemplu: Java - Începător");
+  var items = Array("Exemplu: PHP ","Exemplu: C++", "Exemplu: Java");
   var item = items[Math.floor(Math.random()*items.length)];
   document.getElementById("limbaje").placeholder=item;
 
-  var jobs = Array("Exemplu: IT-Labs - full stack developer - 2 ani","Exemplu: student", "Exemplu: Absolvent");
+  var jobs = Array("Exemplu: Full stack developer","Exemplu: Student", "Exemplu: Absolvent");
   var item2=jobs[Math.floor(Math.random()*jobs.length)];
   document.getElementById("joburi").placeholder=item2;
 
@@ -29,28 +29,42 @@ function test(){
 
 
 <h1>Completare CV</h1>
-<form  method="POST" >
+<form  method="post" action="CVScript.php">
 <p> Limbaje cunoscute:</p><br>
-<textarea id="limbaje" name="limbaje" id="limbaje" cols="50" rows="5"></textarea>
-
+<input type="text" id="limbaje" name="limbaje" ></input>
 <br>
-
+<p> Experiență în limbajul adăugat:</p>
+<select name="expLimbaj" id="expLimbaj">
+  <option>Începător</option>
+  <option>Mediu</option>
+  <option>Avansat</option>
+</select>
 <p> Joburi anterioare:</p><br>
-<textarea id="joburi" name="joburi" id="joburi"  cols="50" rows="5"></textarea>
+<input type="text" id="joburi" name="joburi"></input>
 <br>
-
+<p>Experiență la jobul anterior:</p>
+<select name="expJob" id="expJob">
+  <option>0 ani</option>
+  <option>1 an</option>
+  <option>2 ani</option>
+  <option>3 ani</option>
+  <option>4 ani</option>
+  <option>5 ani</option>
+</select>
 <p> Tehnologii cunoscute:</p><br>
-<textarea id="tehnologii" id="tehnologii" name="tehnologii" cols="50" rows="4"></textarea>
+<input type="text" id="tehnologii" name="tehnologii" ></input>
 <br>
-
-<input type="submit" id="submit" name="submitCvForm" value="Completează CV">
+<input type="submit" name="submitCvForm" value="Completează CV">
 </form>
+</body>
 <?php 
 if(isset($_POST['submitCvForm']))
 {
     
    $_SESSION['limbaje']=$_POST['limbaje'];
+   $_SESSION['expLimbaj']=$_POST['expLimbaj'];
    $_SESSION['joburi']=$_POST['joburi'];
+   $_SESSION['expJob']=$_POST['expJob'];
    $_SESSION['tehnologii']=$_POST['tehnologii'];
    header("Location:CVScript.php");
   
@@ -58,7 +72,5 @@ if(isset($_POST['submitCvForm']))
 }
 
 ?>
-</body>
-
 
 </html>

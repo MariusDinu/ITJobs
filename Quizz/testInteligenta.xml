@@ -1,0 +1,158 @@
+<items>
+    
+    <item>
+        <question index="1" >Apa este pentru gheață ceea ce laptele este pentru…</question>
+        <answer correct="y">Branza</answer>
+        <answer2>Cafea</answer2>
+        <answer3>Prajituri</answer3>
+    </item>
+
+     <item>
+        <question index="2" >Care dintre următoarele cuvinte ar trebui exclus din următoarea înșiruire:</question>
+        <answer correct="y">Zapada</answer>
+        <answer2>Ploaie</answer2>
+        <answer3>Fulger</answer3>
+        <answer4>Tunet</answer4>
+    </item>
+
+     <item>
+        <question index="3" >Care dintre următoarele cuvinte ar trebui exclus din următoarea înșiruire:</question>
+        <answer>18</answer>
+        <answer2 correct="y">20</answer2>
+        <answer3>21</answer3>
+        <answer4>22</answer4>
+    </item>
+
+    <item>
+        <question index="4" >Care cifră este întâlnită cel mai des într-un șir de numere de la 0 la 109?</question>
+        <answer correct="y">0</answer>
+        <answer2>1</answer2>
+        <answer3>2</answer3>
+        <answer4>9</answer4>
+    </item>
+
+    <item>
+        <question index="5" >Doi reprezintă întotdeauna 1 plus 1?</question>
+        <answer></answer>
+        <answer2 correct="y"></answer2>
+        <answer3></answer3>
+    </item>
+
+    <item>
+        <question index="6" >Orice corp solid care nu are niciun unghi este o sfera?</question>
+        <answer>Nu stiu</answer>
+        <answer2 correct="y">Nu</answer2>
+        <answer3>Da</answer3>
+    </item>
+
+    <item>
+        <question index="7" >Toate mamiferele au sânge cald. Niciun şarpe nu are sânge cald</question>
+        <answer>Toţi şerpii sunt mamifere</answer>
+        <answer2 correct="y">Niciun şarpe nu este mamifer</answer2>
+        <answer3>Unii şerpi sunt mamifere</answer3>
+        <answer4>Unii şerpi nu sunt mamifere</answer4>
+    </item>
+
+    <item>
+        <question index="8" >Ce număr urmează în seria 172, 84, 40, 18, ...</question>
+        <answer>8</answer>
+        <answer2 correct="y">7</answer2>
+        <answer3>6</answer3>
+        <answer4>5</answer4>
+    </item>
+
+    <item>
+        <question index="9" >Ce număr urmează în seria 2, 3, 5, 8, 12, 17, ..</question>
+        <answer>22</answer>
+        <answer2 correct="y">23</answer2>
+        <answer3>24</answer3>
+        <answer4>25</answer4>
+    </item>
+
+    <item>
+        <question index="10" >Numarul o mie o suta treizeci si cinci este scris invers astfel:</question>
+        <answer>3511</answer>
+        <answer2 correct="y">5311</answer2>
+        <answer3>3151</answer3>
+    </item>
+
+    <item>
+        <question index="11" >Numarul care urmeaza in acest sir "1, 2, 4, 7, 11, 16" este</question>
+        <answer>21</answer>
+        <answer2 correct="y">22</answer2>
+        <answer3>24</answer3>
+        <answer4>23</answer4>
+    </item>
+
+    <item>
+        <question index="12" >Daca peste trei zile va fi marti, ieri ce zi a fost?</question>
+        <answer>Joi</answer>
+        <answer2 correct="y">Vineri</answer2>
+        <answer3>Sambata</answer3>
+        <answer4>Duminica</answer4>
+    </item>
+
+    <item>
+        <question index="13" >Care este unitatea de masura a tensiunii electrice?</question>
+        <answer correct="y">Volt</answer>
+        <answer2>Watt</answer2>
+        <answer3>Decibel</answer3>
+        <answer4>Ohm</answer4>
+    </item>
+
+    <item>
+        <question index="14" >Cum este repezentat 100 in cifre romane?</question>
+        <answer>X</answer>
+        <answer2 correct="y">C</answer2>
+        <answer3>D</answer3>
+        <answer4>L</answer4>
+    </item>
+
+    <item>
+        <question index="15" >Cum se numesc doua cercuri care au un singur punct comun?</question>
+        <answer>Exterioare</answer>
+        <answer2>Congruente</answer2>
+        <answer3>Conciclice</answer3>
+        <answer4 correct="y">Tangente</answer4>
+    </item>
+
+    <item>
+        <question index="16" >Care termen nu face parte din limbajul matematic?</question>
+        <answer>Matrice</answer>
+        <answer2>Integrala</answer2>
+        <answer3 correct="y">Cuantic</answer3>
+        <answer4>Radical</answer4>
+    </item>
+
+
+    <item>
+        <question index="17" >Cum se mai numeste un unghi de 0 grade?</question>
+        <answer correct="y">Nul</answer>
+        <answer2>Ascutit</answer2>
+        <answer3>Drept</answer3>
+        <answer4>Obtuz</answer4>
+    </item>
+
+    <item>
+        <question index="18" >Ce reprezinta q=m/v?</question>
+        <answer>Formula volumului</answer>
+        <answer2 correct="y">Formula densitatii</answer2>
+        <answer3>Formula temperaturii</answer3>
+    </item>
+
+    <item>
+        <question index="19" >Marime care are o valoare determinata printr-o unitate de masura si printr-un numar real</question>
+        <answer>Etalon</answer>
+        <answer2>Unitar</answer2>
+        <answer3 correct="y">Scalar</answer3>
+    </item>
+
+    <item>
+        <question index="20" >Care este suma masurilor a doua unghiuri complementare?</question>
+        <answer>45</answer>
+        <answer2>360</answer2>
+        <answer3 correct="y">90</answer3>
+        <answer4>180</answer4>
+    </item>
+</items>
+
