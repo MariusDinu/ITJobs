@@ -1,0 +1,145 @@
+<items>
+    
+    <item>
+        <question index="1" >Care e litera lipsa din seria: C C D ? E F G G H</question>
+        <answer1 correct="y">E</answer1>
+        <answer2>D</answer2>
+        <answer3>F</answer3>
+        
+    </item>
+
+     <item>
+        <question index="2" > Care e litera lipsa din seria: A Z B ? C X</question>
+        <answer1 correct="y">Y</answer1>
+        <answer2>X</answer2>
+        <answer3>Z</answer3>
+    </item>
+
+     <item>
+        <question index="3" >Care e litera lipsa din seria: R Q P R Q P ?</question>
+        <answer1>P</answer1>
+        <answer2>Q</answer2>
+        <answer3 correct="y">R</answer3>
+    </item>
+
+    <item>
+        <question index="4" >Care e litera lipsa din seria: B E H K N ? T</question>
+        <answer1 correct="y">O</answer1>
+        <answer2>P</answer2>
+        <answer3>R</answer3>
+    </item>
+
+    <item>
+        <question index="5" >Care e litera lipsa din seria: Y E W G U I ?</question>
+        <answer1>T</answer1>
+        <answer2 correct="y">S</answer2>
+        <answer3>R</answer3>
+    </item>
+
+    <item>
+        <question index="6" >Care e litera lipsa din seria: X ? P L H</question>
+        <answer1>R</answer1>
+        <answer2 correct="y">T</answer2>
+        <answer3>S</answer3>
+    </item>
+
+    <item>
+        <question index="7" >Care e litera lipsa din seria: J G D K ? E L</question>
+        <answer1>G</answer1>
+        <answer2 correct="y">H</answer2>
+        <answer3>J</answer3>
+    </item>
+
+    <item>
+        <question index="8" >Care e litera lipsa din seria: A B D H ?</question>
+        <answer1>L</answer1>
+        <answer2 correct="y">P</answer2>
+        <answer3>N</answer3>
+    </item>
+
+    <item>
+        <question index="9" >Care e litera lipsa din seria: G ? D I J D K L D</question>
+        <answer1>E</answer1>
+        <answer2 correct="y">H</answer2>
+        <answer3>F</answer3>
+    </item>
+
+    <item>
+        <question index="10" >Care e litera lipsa din seria: P Q Q ? S S T U</question>
+        <answer1>P</answer1>
+        <answer2 correct="y">R</answer2>
+        <answer3>N</answer3>
+    </item>
+
+    <item>
+        <question index="11" >Care e litera lipsa din seria: Y E U I Q M ?</question>
+        <answer1>N</answer1>
+        <answer2 correct="y">M</answer2>
+        <answer3>K</answer3>
+    </item>
+
+    <item>
+        <question index="12" >Care e litera lipsa din seria: V S P W T Q ?</question>
+        <answer1 correct="y">X</answer1>
+        <answer2>Y</answer2>
+        <answer3>Z</answer3>
+    </item>
+
+    <item>
+        <question index="13" >Care e litera lipsa din seria: A B K C D K E ?</question>
+        <answer1 correct="y">F</answer1>
+        <answer2>E</answer2>
+        <answer3>G</answer3>
+    </item>
+
+    <item>
+        <question index="14" >Care e litera lipsa din seria: Q R K S T I U V ?</question>
+        <answer1 correct="y">G</answer1>
+        <answer2>Y</answer2>
+        <answer3>V</answer3>
+    </item>
+
+    <item>
+        <question index="15" >Care e litera lipsa din seria: C J Q X E ? S</question>
+        <answer1>M</answer1>
+        <answer2>N</answer2>
+        <answer3 correct="y">L</answer3>
+    </item>
+
+    <item>
+        <question index="16" >Care e litera lipsa din seria: Y D J W F L U H ?</question>
+        <answer1>M</answer1>
+        <answer2 correct="y">N</answer2>
+        <answer3>L</answer3>
+    </item>
+
+
+    <item>
+        <question index="17" >Care e litera lipsa din seria: C D C D D D E D E ?</question>
+        <answer1 correct="y">F</answer1>
+        <answer2>G</answer2>
+        <answer3>E</answer3>
+    </item>
+
+    <item>
+        <question index="18" >Care e litera lipsa din seria: A B B D C F D ?</question>
+        <answer1>D</answer1>
+        <answer2>E</answer2>
+        <answer3 correct="y">H</answer3>
+    </item>
+
+    <item>
+        <question index="19" >Care e litera lipsa din seria: B C E G K ? Q S</question>
+        <answer1>L</answer1>
+        <answer2>N</answer2>
+        <answer3 correct="y">M</answer3>
+    </item>
+
+    <item>
+        <question index="20" >Care e litera lipsa din seria: M N N O O ? P P P</question>
+        <answer1>N</answer1>
+        <answer2 correct="y">O</answer2>
+        <answer3>P</answer3>
+    </item>
+</items>
+
