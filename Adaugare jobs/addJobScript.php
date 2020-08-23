@@ -9,7 +9,7 @@ session_start();
 <body>
 
 <?php
-include "DB.php";
+include "../DB.php";
 $DB=new DB();
 $job=$_SESSION["job"];				//aici preiau datele din formular
 $oras=$_SESSION["oras"];		
