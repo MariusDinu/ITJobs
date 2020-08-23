@@ -16,11 +16,13 @@
 
 
  function adaugareElement(){
-var nume=document.getElementById("nume");
-    var btn = document.createElement("BUTTON");
+   var form=document.getElementById("adaugareElement");
+  var nume=document.getElementById("nume");
+  var btn = document.createElement("INPUT");
   btn.innerHTML = nume.value;
-  document.body.appendChild(btn);
+  form.appendChild(btn);
 
 event.preventDefault();
  }
+ function completareCv(){}
  </script>
