@@ -12,7 +12,7 @@ addInDatabase($email,$password,$phoneForSms);
 
 function addInDatabase($email,$password,$phoneForSms){
 $DB=new DB();
-$sqlInsertCommand="INSERT INTO `angajator`(`E-mail`,`Password`,`PhoNumber`) VALUES ('$email','$password','$phoneForSms')";
+$sqlInsertCommand="INSERT INTO `angajator`(`E-mail`,`Password`,`PhoNumber`,`Active`) VALUES ('$email','$password','$phoneForSms','0')";
 $q=$DB::obtine_conexiune()->prepare($sqlInsertCommand);
 if($q->execute())
 {echo "true";}else {echo "false";}

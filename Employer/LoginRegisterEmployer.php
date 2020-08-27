@@ -27,8 +27,8 @@
 <input class="input-field" onkeyup="checkPassword()" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="text" id="ConfirmPasswordEmployerRegister" name="ConfirmPasswordEmployerRegister" required>
 <p id='errorPassword'></p>
 <p> PhoneNumber:</p>
-<input class="input-field" type="text" maxlenght="9" pattern="[0-9]+" id="PhoneEmployerRegister" name="PhoneEmployerRegister" required>
-
+<input class="input-field" type="text" onKeyUp="checkPhone(this)" maxlength="9" pattern="[0-9]+" id="PhoneEmployerRegister" name="PhoneEmployerRegister" required>
+<p id="errorPhone"></p>
 <p> Company Site:</p>
 <input class="input-field" type="text" id="inputSiteFirma" name="inputSiteFirma" required>
 
@@ -36,10 +36,10 @@
 <input class="input-field" type="text" id="limbajeFirma" name="limbajeFirma" required>
 
 <p>C.U.I.:</p>
-<input class="input-field" type="text" id="cuiFirma" maxlenght="9" pattern="[0-9]+" name="cuiFirma" required>
+<input class="input-field" type="text" id="cuiFirma" maxlength="9" pattern="[0-9]+" name="cuiFirma" required>
 <br>
 <p>C.I.F.:</p>
-<input class="input-field" type="text" id="cifFirma" maxlenght="9" pattern="[0-9]+" name="cifFirma" required>
+<input class="input-field" type="text" id="cifFirma" maxlength="9" pattern="[0-9]+" name="cifFirma" required>
 <p> Company description:</p>
 <input class="input-field" type="text" id="tehnologii" name="tehnologii" required>
 <br>
@@ -124,9 +124,7 @@ if ($uploadOk == 0) {
 }*/
 
 ?>
-<script>
-  
-  </script>
+
 <script>
         var x = document.getElementById("login");
         var y = document.getElementById("register");
@@ -145,7 +143,8 @@ if ($uploadOk == 0) {
             z.style.left = "0";
             z.style.background = "linear-gradient(to right, #ff9900, #fff)";
         }
-    </script>
+</script>
+
 <script>
 var code = 0;
         var email;
@@ -159,7 +158,7 @@ function checkEmail(){
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + emailScript);
             xmlhttp.onload = function() {
-                console.log(this.response);
+        
                 if (this.response == "true") {
                     document.getElementById("errorEmail").innerHTML = "";
                     document.getElementById("errorEmail").value = 0;
@@ -169,17 +168,27 @@ function checkEmail(){
                 }
 
             }
-
-
-
 }
+
+
+function checkPhone(current){
+   console.log(current.value.length);
+   if(current.value.length>8)
+       {
+         document.getElementById("errorPhone").innerHTML = "";
+         document.getElementById("errorPhone").value=0;
+         }
+    else {
+         document.getElementById("errorPhone").innerHTML = "Acest numar nu este valid!";
+         document.getElementById("errorPhone").value=1;
+  }
+}
+
+
 function uploadFile(email){
           const myForm=document.getElementById("register");
-          const inpFile=document.getElementById("file");
-
-        
-          
- const endpoint="../Employer/upload.php";
+          const inpFile=document.getElementById("file");   
+          const endpoint="../Employer/upload.php";
           const formData=new FormData();
 
           console.log(inpFile.files);
@@ -187,7 +196,6 @@ function uploadFile(email){
           formData.append("user",email);
           fetch(endpoint,{method:"post",body:formData}).catch(console.error);
   event.preventDefault();
-
   }
        
 function checkPassword(){
@@ -201,6 +209,7 @@ function checkPassword(){
                 document.getElementById("errorPassword").value = 1;
             }
 }
+
 function resendSms(){
   var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "SendSmsUserRegister.php", true);
@@ -212,86 +221,68 @@ function resendSms(){
             }
             event.preventDefault();
 }
+
 function setEmailPassPhone(emailCopy, passCopy, phoneCopy) {
             email = emailCopy;
             password = passCopy;
             phone = phoneCopy;
         }
-function setCode(codeForCheck) {
-            code = codeForCheck;
-        }
-function checkCode() {
-            var codeFromInput = document.getElementById("inputCheckCode").value;
-            if (codeFromInput == code) {
-              document.getElementById('errorCode').innerHTML="";
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "EmployerRegister.php", true);
-                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
-                xmlhttp.onload = function() {
-                    window.location.href = "LoginRegisterEmployer.php?succes=1"; 
-                }
-                
-            }
-            else {
-document.getElementById('errorCode').innerHTML="Cod incorect!";
 
-            }
-
-            event.preventDefault();
-        }
-        function registerEmployer() 
+                        
+function registerEmployer() 
           {
             
             var email = document.getElementById("EmailEmployerRegister").value;
             var password = document.getElementById("PasswordEmployerRegister").value;
             var phone = document.getElementById("PhoneEmployerRegister").value;
-            //var prefix = document.getElementById("PrefixUserRegister").value;
             var confirmPass = document.getElementById("errorPassword").value;
             var confirmEmail = document.getElementById("errorEmail").value;
-            if (confirmPass == 0 && confirmEmail == 0) {
+            var confirmPhone=document.getElementById("errorPhone").value;
+
+            if (confirmPass == 0 && confirmEmail == 0 &&confirmPhone==0) { 
+                setEmailPassPhone(email, password, phone);
                 document.getElementById("errorRegister").innerHTML = "";
                 document.getElementById("loginRegisterBox").style.display = "none";
                 document.getElementById("checkCodePhone").style.display = "block";
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "../User/SendSmsUserRegister.php", true);
-                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send("phone=" + phone);
-                xmlhttp.onload = function() {
-                    var codeCopy = this.response;
-                    setCode(codeCopy);
-                    setEmailPassPhone(email, password, phone);uploadFile(email);
-                }
+                document.getElementById('errorCode').innerHTML="";
 
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "EmployerRegister.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
+                xmlhttp.onload = function() {
+                    window.location.href = "LoginRegisterEmployer.php?succes=2"; 
+                }
+                   uploadFile(email);
             } else {
                 document.getElementById("errorRegister").innerHTML = "Rezolva problemele din formular!";
             }
+event.preventDefault();
+}
 
-            event.preventDefault();
-        }
-        function loginEmployer() {
+function loginEmployer() {
             document.getElementById("accountDone").innerHTML="";
             var emailLogin = document.getElementById("EmailEmployerLogin").value;
-            var passwordLogin = document.getElementById("PasswordEmployerLogin").value;
-            console.log(emailLogin);
-            console.log(passwordLogin);
+            var passwordLogin = document.getElementById("PasswordEmployerLogin").value; 
+
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "EmployerLogin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + emailLogin + "&password=" + passwordLogin);
             xmlhttp.onload = function() {
-                console.log(this.response);
                 if (this.response == "true") {
 
                     window.location.href = "EmployerPage.php";
                     document.getElementById("errorLogin").innerHTML = "";
-                } else {
+                } else if(this.response=="false") {
                     document.getElementById("errorLogin").innerHTML = "Parola sau email incorect!";
                 }
+                else {
+                  document.getElementById("errorLogin").innerHTML = "Adminul trebuie sa verifice documentele! Durata aproximativa intre 5-10 minute.";
+                }
             }
-            event.preventDefault();
-
-        }
+event.preventDefault();
+}
 
 </script>
 </body>
