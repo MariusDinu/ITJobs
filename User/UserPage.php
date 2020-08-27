@@ -74,14 +74,14 @@ session_start();
 <script>
 
 function goToCV(){
-            window.location.href="Completare CV/CVform.php";
+            window.location.href="CVform.php";
 }
 
 function afisareAplicari(input){
             showData(input);
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "Aplicari.php", true);
+            xmlhttp.open("POST", "../ScriptsUser/Aplicari.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("userName=" +input);
             xmlhttp.onload = function() {
@@ -93,7 +93,7 @@ event.preventDefault();
 function showData(input){
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "Data.php", true);
+            xmlhttp.open("POST", "../ScriptsUser/Data.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("userName=" +input);
             xmlhttp.onload = function() {
