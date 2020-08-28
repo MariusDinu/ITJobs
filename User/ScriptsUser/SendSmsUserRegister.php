@@ -2,7 +2,7 @@
 
 
 use GuzzleHttp\Client;
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 $phone=$_POST['phone'];
 $prefix="+40";
 $phoneForSms=$prefix.$phone;

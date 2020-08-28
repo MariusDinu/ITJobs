@@ -81,7 +81,7 @@ function afisareAplicari(input){
             showData(input);
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "../ScriptsUser/Aplicari.php", true);
+            xmlhttp.open("POST", "./ScriptsUser/Aplicari.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("userName=" +input);
             xmlhttp.onload = function() {
@@ -93,7 +93,7 @@ event.preventDefault();
 function showData(input){
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "../ScriptsUser/Data.php", true);
+            xmlhttp.open("POST", "./ScriptsUser/Data.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("userName=" +input);
             xmlhttp.onload = function() {

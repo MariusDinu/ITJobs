@@ -1,7 +1,7 @@
 <?php
 
 $user=$_POST['userName'];
-include "..\DB.php";
+include "../../DB.php";
 $DB=new DB();
 
 $sqlSearchCommand="SELECT * FROM `user` WHERE `Email`='$user'";

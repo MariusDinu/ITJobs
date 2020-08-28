@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "..\DB.php";
+include "../../DB.php";
 $emailSearch=$_POST['email'];
 $password=md5($_POST['password']);
 $DB=new DB();

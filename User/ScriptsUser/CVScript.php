@@ -9,7 +9,7 @@ session_start();
 <body>
 
 <?php
-include "DB.php";
+include "../../DB.php";
 $DB=new DB();
 $limbaje=$_SESSION["limbaje"];				//aici preiau datele din formular.. o sa modific cu session cand va fi nevoie..
 $tehnologii=$_SESSION["tehnologii"];		//it's just for testing

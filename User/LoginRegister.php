@@ -78,7 +78,7 @@
         function checkEmail() {
             var emailScript = document.getElementById("EmailUserRegister").value;
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "../ScriptsUser/SearchUser.php", true);
+            xmlhttp.open("POST", "./ScriptsUser/SearchUser.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + emailScript);
             xmlhttp.onload = function() {
@@ -109,7 +109,7 @@
 
         function resendCode() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "../ScriptsUser/SendSmsUserRegister.php", true);
+            xmlhttp.open("POST", "./ScriptsUser/SendSmsUserRegister.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("phone=" + phone);
             xmlhttp.onload = function() {
@@ -132,7 +132,7 @@
                 document.getElementById("loginRegisterBox").style.display = "none";
                 document.getElementById("checkCodePhone").style.display = "block";
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "SendSmsUserRegister.php", true);
+                xmlhttp.open("POST", "./ScriptsUser/SendSmsUserRegister.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send("phone=" + phone);
                 xmlhttp.onload = function() {
@@ -152,7 +152,7 @@
             var emailLogin = document.getElementById("EmailUserLogin").value;
             var passwordLogin = document.getElementById("PasswordUserLogin").value;
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "../ScriptsUser/UserLogin.php", true);
+            xmlhttp.open("POST", "./ScriptsUser/UserLogin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + emailLogin + "&password=" + passwordLogin);
             xmlhttp.onload = function() {
@@ -184,7 +184,7 @@
             var codeFromInput = document.getElementById("inputCheckCode").value;
             if (codeFromInput == code) {
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "../ScriptsUser/UserRegister.php", true);
+                xmlhttp.open("POST", "./ScriptsUser/UserRegister.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
                 xmlhttp.onload = function() {

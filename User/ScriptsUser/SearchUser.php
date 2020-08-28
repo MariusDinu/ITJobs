@@ -1,5 +1,5 @@
 <?php
-include "..\DB.php";
+include "../../DB.php";
 $emailSearch=$_POST['email'];
 $DB=new DB();
 $sqlSearchCommand="SELECT Email FROM `user` WHERE Email='$emailSearch'";

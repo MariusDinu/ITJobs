@@ -1,5 +1,5 @@
 <?php
-include "..\DB.php";
+include "../../DB.php";
 
 
 $email=$_POST['email'];
