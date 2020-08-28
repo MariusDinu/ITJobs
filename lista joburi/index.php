@@ -14,7 +14,7 @@ session_start();
   <!-- Navbar-->
   <nav
     class="flex flex-col items-center p-4 md:flex-row md:justify-around md:items-center text-primary font-primary bg-white border-t-2 border-b-4 border-grey-500">
-    <a href="index.html" class="text-grey-800 font-bold md:text-2xl">
+    <a href="../../lista joburi/index.html" class="text-grey-800 font-bold md:text-2xl">
       <p>it-jobs</p>
     </a>
 
@@ -42,7 +42,7 @@ session_start();
       </a>
 
       <a href="#" id="lang" class="flex items-center hover:text-secondary py-2 md:mx-5">
-        <img src="/img/ro-flag.png" alt="" class="h-5">
+        <img src="" alt="" class="h-5">
         <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-down w-6 h-6">
           <path fill-rule="evenodd"
             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
