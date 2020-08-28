@@ -1,15 +1,20 @@
 <?php
 
-$user=$_POST['userName'];
+$user = $_POST['userName'];
 include "../../DB.php";
-$DB=new DB();
+$DB = new DB();
 
-$sqlSearchCommand="SELECT * FROM `user` WHERE `Email`='$user'";
-$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommand);
+$sqlSearchCommand = "SELECT * FROM `user` WHERE `Email`='$user'";
+$prepare = $DB::obtine_conexiune()->prepare($sqlSearchCommand);
 $prepare->execute();
-$array=$prepare->fetchAll();
+$array = $prepare->fetchAll();
 
 
-echo "<p id='profilEmailUser'>Email:".$array[0]['Email']."</p> 
-<p id='profilPhoneUser'>Telefon:".$array[0]['PhoNumber']."</p>";
-?>
+echo "
+<p class='mb-5 text-xl font-medium sm:text-2xl md:text-4xl' id='profilNameUser'>" . $user . "</p>
+<span class='mr-10 text-gray-600'>Email:</span>
+<span id='profilEmailUser'>" . $array[0]['Email'] . "</span>
+<hr class='my-3'> 
+<span class='mr-6 text-gray-600'>Telefon:</span>
+<span id='profilPhoneUser'>(+40)" . $array[0]['PhoNumber'] . "</span>
+<hr class='my-3'>";
