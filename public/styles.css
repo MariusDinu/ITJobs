@@ -618,6 +618,11 @@ video {
   }
 }
 
+@font-face {
+  font-family: 'Futura';
+  src: url(../Futura-Medium.ttf) format('truetype');
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
@@ -6187,7 +6192,7 @@ video {
 }
 
 .font-primary {
-  font-family: Futura;
+  font-family: Futura, 'Futura';
 }
 
 .font-hairline {
@@ -23959,7 +23964,7 @@ video {
   }
 
   .sm\:font-primary {
-    font-family: Futura;
+    font-family: Futura, 'Futura';
   }
 
   .sm\:font-hairline {
@@ -41640,7 +41645,7 @@ video {
   }
 
   .md\:font-primary {
-    font-family: Futura;
+    font-family: Futura, 'Futura';
   }
 
   .md\:font-hairline {
@@ -59321,7 +59326,7 @@ video {
   }
 
   .lg\:font-primary {
-    font-family: Futura;
+    font-family: Futura, 'Futura';
   }
 
   .lg\:font-hairline {
@@ -77002,7 +77007,7 @@ video {
   }
 
   .xl\:font-primary {
-    font-family: Futura;
+    font-family: Futura, 'Futura';
   }
 
   .xl\:font-hairline {
