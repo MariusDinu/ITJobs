@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <html lang="en">
@@ -11,9 +11,9 @@ session_start();
 </head>
 
 <body>
-  <!-- Navbar-->
-  <?php if(isset($_SESSION['user'])){
-echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
+  <!-- Navbar - Logged in -->
+  <?php if (isset($_SESSION['user'])) {
+    echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
     <a href='../lista joburi/index.php' class='font-bold text-grey-800 md:text-2xl'>
       <p>it-jobs</p>
     </a>
@@ -45,18 +45,25 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
         </div>
       </div>
 
-      <a href='#' id='CV' onclick='goToCV()' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+      <a href='../User/CVform.php' id='CV' onclick='goToCV()' class='flex items-center py-2 hover:text-secondary md:mx-5'>
         <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 document-text'>
           <path fill-rule='evenodd' d='M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z' clip-rule='evenodd'></path>
         </svg>
         <span class='ml-2'>CV</span>
       </a>
 
-      <a href='./UserPage.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+      <a href='../User/UserPage.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
         <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 user-circle'>
           <path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z' clip-rule='evenodd'></path>
         </svg>
         <span class='ml-2'>Profilul meu</span>
+      </a>
+
+      <a href='./index.php' id='logout' onclick='logout()' class='flex items-center py-2 hover:text-secondary md:mx-5 '>
+        <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 logout'>
+         <path fill-rule='evenodd' d='M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z' clip-rule='evenodd'></path>
+        </svg>
+        <span class='ml-2'>Deconecteaza-te</span>
       </a>
 
       <a href='#' id='lang' class='flex items-center py-2 hover:text-secondary md:mx-5'>
@@ -82,12 +89,10 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
 
     </div>
   </nav>";
-     }
-     else
-  {
-
+  } else {
+    // Navbar - not logged in
     echo " <nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
-        <a href='index.html' class='font-bold text-grey-800 md:text-2xl'>
+        <a href='./index.php' class='font-bold text-grey-800 md:text-2xl'>
             <p>it-jobs</p>
         </a>
 
@@ -100,14 +105,14 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
                 <span>Pentru angajatori</span>
             </a>
 
-            <a href='#' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+            <a href='../User/LoginRegister.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
                 <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 mx-2 arrow-circle-right'>
                     <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z' clip-rule='evenodd'></path>
                 </svg>
                 <span>Intră în cont</span>
             </a>
 
-            <a href='#' class='py-2 md:mx-5'>
+            <a href='../User/LoginRegister.php' class='py-2 md:mx-5'>
                 <span class='px-3 py-1 border-2 rounded-md border-secondary text-primary hover:bg-secondary'> Cont
                     nou</span>
             </a>
@@ -133,8 +138,8 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
                 </div>
             </div>
         </div>
-    </nav>"
-    ;}?>
+    </nav>";
+  } ?>
 
   <!-- Main Content -->
   <main class="min-h-screen overflow-hidden bg-primary">
@@ -155,39 +160,35 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
         </div>
 
         <!-- Search Bars -->
-       <form method="POST" action="index2.php">
-        <div class="inline mx-auto mb-10 text-gray-600">
-          <input
-            class="px-4 py-2 pr-8 my-4 leading-tight bg-white border border-gray-400 rounded shadow appearance-none md:mx-4 md:w-64 hover:border-gray-500 focus:outline-none focus:shadow-outline"
-            type="search" id="job" placeholder="Cuvinte cheie" name="job">
-          
-          <!-- City Dropdown Selector -->
-          
-          <div class="relative inline-block w-28">
-            <select
-              class="block w-full px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline" id="oras" name="oras">
-              <option>Oras</option>
-              <option>Bucuresti</option>
-              <option>Cluj</option>
-              <option>Iasi</option>
-              <option>Timisoara</option>
-            </select>
-<button onclick="logout()">Log out</button>
-            <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-              <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-            </div>
-            
-          </div>
-        </div>
+        <form method="POST" action="index2.php">
+          <div class="inline mx-auto mb-10 text-gray-600">
+            <input class="px-4 py-2 pr-8 my-4 leading-tight bg-white border border-gray-400 rounded shadow appearance-none md:mx-4 md:w-64 hover:border-gray-500 focus:outline-none focus:shadow-outline" type="search" id="job" placeholder="Cuvinte cheie" name="job">
 
-        <div class="flex justify-center mx-auto mt-5">
-          <button class="px-4 py-2 font-bold text-white rounded-lg bg-primary hover:bg-ternary" type="submit">
-            Cauta acum
-          </button>
+            <!-- City Dropdown Selector -->
+
+            <div class="relative inline-block w-28">
+              <select class="block w-full px-4 py-2 pr-8 leading-tight bg-white border border-gray-400 rounded shadow appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline" id="oras" name="oras">
+                <option>Oras</option>
+                <option>Bucuresti</option>
+                <option>Cluj</option>
+                <option>Iasi</option>
+                <option>Timisoara</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flex justify-center mx-auto mt-5">
+            <button class="px-4 py-2 font-bold text-white rounded-lg bg-primary hover:bg-ternary" type="submit">
+              Cauta acum
+            </button>
             <form>
-        </div>
-        
+          </div>
+
       </div>
 
     </div>
@@ -197,37 +198,50 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
 
 </body>
 <script>
+  function cauta() {
+    var job = document.getElementById("job").value;
+    var oras = document.getElementById("oras").value;
+    console.log(job);
+    console.log(oras);
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("POST", "searchJobScript.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    if (oras === "Oras") {
+      oras = " ";
+
+    }
+    xmlhttp.send("job=" + job + "&oras=" + oras);
+    xmlhttp.onload = function() {
+      console.log(this.response);
+
+    }
+  }
+
+  function logout() {
+    <?php
+    session_unset();
+    session_destroy();
+    ?>
+    console.log('logout successful');
+  }
+</script>
+<!-- Language Dropdown Menu -->
+<script>
   const languageMenu = document.getElementById("languageMenu")
   languageMenu.style.display = 'none';
   document.getElementById("lang").addEventListener("click", () => {
     languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
   });
+</script>
 
-  function cauta(){
-    var job=document.getElementById("job").value;
-    var oras=document.getElementById("oras").value;
-    console.log(job);
-    console.log(oras);
-    var xmlhttp=new XMLHttpRequest();
-
-    xmlhttp.open("POST","searchJobScript.php",true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    if(oras==="Oras"){
-      oras=" ";
-    
-    }
-      xmlhttp.send("job="+job+"&oras="+oras);
-    xmlhttp.onload=function(){
-      console.log(this.response);
-     
-    }
-  }
-  function logout(){
-    <?php 
-    session_unset();
-session_destroy();
-    ?>
-  }
+<!-- Test Dropdown Menu -->
+<script>
+  const testMenu = document.getElementById("testMenu")
+  testMenu.style.display = 'none';
+  document.getElementById("tests").addEventListener("click", () => {
+    testMenu.style.display = testMenu.style.display === 'none' ? '' : 'none';
+  });
 </script>
 
 </html>

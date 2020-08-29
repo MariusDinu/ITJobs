@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -12,13 +12,13 @@ session_start();
 </head>
 
 <body onload="abc()">
-    <div id="job" value="<?php if(isset($_POST['job'])) echo $_POST['job'];?>"></div>
-<div id="oras" value="<?php if(isset($_POST['oras']))echo $_POST['oras']; ?>"></div>
+    <div id="job" value="<?php if (isset($_POST['job'])) echo $_POST['job']; ?>"></div>
+    <div id="oras" value="<?php if (isset($_POST['oras'])) echo $_POST['oras']; ?>"></div>
     <!-- Navbar-->
-    
-     <!-- if logged out-->
-     <?php if(isset($_SESSION['user'])){
-echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
+
+    <!-- if logged in-->
+    <?php if (isset($_SESSION['user'])) {
+        echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
     <a href='../lista joburi/index.php' class='font-bold text-grey-800 md:text-2xl'>
       <p>it-jobs</p>
     </a>
@@ -57,11 +57,18 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
         <span class='ml-2'>CV</span>
       </a>
 
-      <a href='./UserPage.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+      <a href='../User/UserPage.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
         <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 user-circle'>
           <path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z' clip-rule='evenodd'></path>
         </svg>
         <span class='ml-2'>Profilul meu</span>
+      </a>
+
+      <a href='./index.php' id='logout' onclick='logout()' class='flex items-center py-2 hover:text-secondary md:mx-5 '>
+        <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 logout'>
+         <path fill-rule='evenodd' d='M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z' clip-rule='evenodd'></path>
+        </svg>
+        <span class='ml-2'>Deconecteaza-te</span>
       </a>
 
       <a href='#' id='lang' class='flex items-center py-2 hover:text-secondary md:mx-5'>
@@ -86,13 +93,11 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
       </div>
 
     </div>
-  </nav>";
-     }
-     else
-  {
-
-    echo " <nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
-        <a href='index.html' class='font-bold text-grey-800 md:text-2xl'>
+  </nav>"; 
+    } else {
+        //else logged out
+        echo " <nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
+        <a href='./index.php' class='font-bold text-grey-800 md:text-2xl'>
             <p>it-jobs</p>
         </a>
 
@@ -105,14 +110,14 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
                 <span>Pentru angajatori</span>
             </a>
 
-            <a href='#' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+            <a href='../User/LoginRegister.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
                 <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 mx-2 arrow-circle-right'>
                     <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z' clip-rule='evenodd'></path>
                 </svg>
                 <span>Intră în cont</span>
             </a>
 
-            <a href='#' class='py-2 md:mx-5'>
+            <a href='../User/LoginRegister.php' class='py-2 md:mx-5'>
                 <span class='px-3 py-1 border-2 rounded-md border-secondary text-primary hover:bg-secondary'> Cont
                     nou</span>
             </a>
@@ -138,8 +143,8 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
                 </div>
             </div>
         </div>
-    </nav>";}?>
-    <!-- else logged in-->
+    </nav>";
+    } ?>
     <main class="min-h-screen overflow-hidden bg-gray-200">
         <form method="post" action="index2.php">
             <div class="flex items-center justify-center mx-10 my-10 text-gray-600">
@@ -195,42 +200,62 @@ echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row
             <span id='job-counter' class='text-4xl lg:text-5xl'> </span>
             <div id="afisare"></div>
 </body>
-</html>
 <script type="text/javascript">
-    function abc(){
-var job=document.getElementById("job").getAttribute('value');
-    var oras=document.getElementById("oras").getAttribute('value');
-var xmlhttp=new XMLHttpRequest();
+    function abc() {
+        var job = document.getElementById("job").getAttribute('value');
+        var oras = document.getElementById("oras").getAttribute('value');
+        var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST","searchJobScript.php",true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    if(oras==="Oras"){
-      oras="";
-    
+        xmlhttp.open("POST", "searchJobScript.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        if (oras === "Oras") {
+            oras = "";
+
+        }
+        xmlhttp.send("job=" + job + "&oras=" + oras);
+        xmlhttp.onload = function() {
+            document.getElementById("afisare").innerHTML = this.response;
+            var x = document.getElementById("parinte").querySelectorAll("#jobNumber");
+            if (x.length > 1)
+                document.getElementById("job-counter").innerHTML = x.length + " " + "Jobs";
+            else if (x.length == 1)
+                document.getElementById("job-counter").innerHTML = x.length + " " + "Job";
+            else
+
+                document.getElementById("anunt").style.removeProperty('display');
+        }
     }
-      xmlhttp.send("job="+job+"&oras="+oras);
-    xmlhttp.onload=function(){
-      document.getElementById("afisare").innerHTML=this.response;
-      var x = document.getElementById("parinte").querySelectorAll("#jobNumber");
-  if(x.length >1)
-   document.getElementById("job-counter").innerHTML=x.length+" "+"Jobs";
-else if(x.length==1)
-     document.getElementById("job-counter").innerHTML=x.length+" "+"Job";
-else
-    
-    document.getElementById("anunt").style.removeProperty( 'display' );
+
+    function aplica(user, idJob) {
+        console.log(user);
+        console.log(idJob);
     }
 
-  function aplica(current){
-    console.log(current.id);
-
-  }
-   function goToCV() {
-    window.location.href = "CVform.php";
-  }
-  const languageMenu = document.getElementById("languageMenu")
-    languageMenu.style.display = 'none';
-    document.getElementById("lang").addEventListener("click", () => {
-        languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
-    });
+    function logout() {
+        <?php
+        session_unset();
+        session_destroy();
+        ?>
+        console.log('logout successful');
+    }
 </script>
+
+<!-- Language Dropdown Menu -->
+<script>
+  const languageMenu = document.getElementById("languageMenu")
+  languageMenu.style.display = 'none';
+  document.getElementById("lang").addEventListener("click", () => {
+    languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
+  });
+</script>
+
+<!-- Test Dropdown Menu -->
+<script>
+  const testMenu = document.getElementById("testMenu")
+  testMenu.style.display = 'none';
+  document.getElementById("tests").addEventListener("click", () => {
+    testMenu.style.display = testMenu.style.display === 'none' ? '' : 'none';
+  });
+</script>
+
+</html>
