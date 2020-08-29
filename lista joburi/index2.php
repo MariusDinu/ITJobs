@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +12,10 @@ session_start();
 </head>
 
 <body onload="abc()">
-	<div id="job" value="<?php if(isset($_POST['job'])) echo $_POST['job'];?>"></div>
-<div id="oras" value="<?php if(isset($_POST['oras']))echo $_POST['oras']; ?>"></div>
-	<!-- Navbar-->
-     <!-- Navbar-->
+    <div id="job" value="<?php if (isset($_POST['job'])) echo $_POST['job']; ?>"></div>
+    <div id="oras" value="<?php if (isset($_POST['oras'])) echo $_POST['oras']; ?>"></div>
+    <!-- Navbar-->
+    <!-- Navbar-->
     <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
         <a href="index.html" class="font-bold text-grey-800 md:text-2xl">
             <p>it-jobs</p>
@@ -41,8 +42,15 @@ session_start();
                     nou</span>
             </a>
 
+            <a href="#" id="logout" class="flex items-center hidden py-2 hover:text-secondary md:mx-5 ">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 logout">
+                    <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="ml-2">Deconecteaza-te</span>
+            </a>
+
             <a href="#" id="lang" class="flex items-center py-2 hover:text-secondary md:mx-5">
-                <img src="" alt="" class="h-5">
+                <img src="../img/ro-flag.png" alt="" class="h-5">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 chevron-down">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
@@ -84,7 +92,7 @@ session_start();
                         </div>
                     </div>
 
-                    <input  type="text" placeholder="Cuvinte cheie" value="" id="job" name="job" class="relative w-full h-12 py-2 pl-12 pr-2 text-sm bg-white border border-gray-400 rounded-lg shadow appearance-none hover:border-gray-500 focus:shadow-outline focus:border-primary focus:outline-none">
+                    <input type="text" placeholder="Cuvinte cheie" value="" id="job" name="job" class="relative w-full h-12 py-2 pl-12 pr-2 text-sm bg-white border border-gray-400 rounded-lg shadow appearance-none hover:border-gray-500 focus:shadow-outline focus:border-primary focus:outline-none">
                 </div>
                 <!-- City Dropdown Selector -->
 
@@ -108,49 +116,52 @@ session_start();
             </div>
         </form>
         <div class="flex flex-col items-center justify-center h-48 max-w-md p-5 mx-auto my-10 bg-white border border-gray-400 rounded-lg shadow appearance-none md:max-w-xl" id="anunt" style="display:none;">
-            <svg viewBox="0 0 20 20" fill="#F9A826" class="w-16 h-16 exclamation"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            <svg viewBox="0 0 20 20" fill="#F9A826" class="w-16 h-16 exclamation">
+                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+            </svg>
             <p class="text-2xl">0 Anunturi</p>
             <p>Nu am gasit nici un anunt conform criteriilor tale de cautare</p>
         </div>
-<div class='w-10/12 h-auto max-w-4xl mx-auto' id="parinte">
+        <div class='w-10/12 h-auto max-w-4xl mx-auto' id="parinte">
             <span id='job-counter' class='text-4xl lg:text-5xl'> </span>
-<div id="afisare"></div>
+            <div id="afisare"></div>
 </body>
 
 <script type="text/javascript">
-	function abc(){
-var job=document.getElementById("job").getAttribute('value');
-    var oras=document.getElementById("oras").getAttribute('value');
-var xmlhttp=new XMLHttpRequest();
+    function abc() {
+        var job = document.getElementById("job").getAttribute('value');
+        var oras = document.getElementById("oras").getAttribute('value');
+        var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST","searchJobScript.php",true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    if(oras==="Oras"){
-      oras="";
-    
-    }
-      xmlhttp.send("job="+job+"&oras="+oras);
-    xmlhttp.onload=function(){
-      document.getElementById("afisare").innerHTML=this.response;
-      var x = document.getElementById("parinte").querySelectorAll("#jobNumber");
-  if(x.length >1)
-   document.getElementById("job-counter").innerHTML=x.length+" "+"Jobs";
-else if(x.length==1)
-     document.getElementById("job-counter").innerHTML=x.length+" "+"Job";
-else
-	
-	document.getElementById("anunt").style.removeProperty( 'display' );
-    }
-  }
+        xmlhttp.open("POST", "searchJobScript.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        if (oras === "Oras") {
+            oras = "";
 
-  function aplica(user,idJob){
-  	console.log(user);
-      console.log(idJob);
-  }
-  const languageMenu = document.getElementById("languageMenu")
+        }
+        xmlhttp.send("job=" + job + "&oras=" + oras);
+        xmlhttp.onload = function() {
+            document.getElementById("afisare").innerHTML = this.response;
+            var x = document.getElementById("parinte").querySelectorAll("#jobNumber");
+            if (x.length > 1)
+                document.getElementById("job-counter").innerHTML = x.length + " " + "Jobs";
+            else if (x.length == 1)
+                document.getElementById("job-counter").innerHTML = x.length + " " + "Job";
+            else
+
+                document.getElementById("anunt").style.removeProperty('display');
+        }
+    }
+
+    function aplica(user, idJob) {
+        console.log(user);
+        console.log(idJob);
+    }
+    const languageMenu = document.getElementById("languageMenu")
     languageMenu.style.display = 'none';
     document.getElementById("lang").addEventListener("click", () => {
         languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
     });
 </script>
+
 </html>

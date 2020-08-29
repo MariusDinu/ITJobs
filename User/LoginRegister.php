@@ -53,11 +53,12 @@
                 <button class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-secondary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="registerUser()">Creaza cont</button>
             </form>
         </div>
-        <div id="checkCodePhone" class="box" style="display:none">
-            <form id="checkCode" class='input'>
-                <input id="inputCheckCode" class="input-field" maxlength="4" pattern="[0-9]+" required>
-                <button class="submit-btn" onclick="checkCode()">Check Code</button>
-                <button class="submit-btn" onclick="resendCode()">Send code again</button> </form>
+        
+        <div id="checkCodePhone" class="hidden w-3/4 h-auto max-w-sm p-4 mx-auto bg-white border border-gray-400 rounded-lg shadow appearance-none sm:p-10 md:w-1/2">
+            <form id="checkCode" class='flex flex-col justify-center'>
+            <input id="inputCheckCode" class="block w-full px-3 py-2 mb-5 placeholder-gray-600 bg-white border-2 border-gray-300 rounded-lg shadow-md text-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none" placeholder="****" maxlength="4" pattern="[0-9]+" required>
+            <button class="px-4 py-2 mb-3 font-bold text-white rounded bg-secondary hover:bg-primary" onclick="checkCode()">Verifica codul</button>
+            <button class="px-4 py-2 font-semibold text-black bg-transparent border-2 rounded border-secondary hover:text-white hover:bg-secondary" onclick="resendCode()">Retrimite codul</button> </form>
         </div>
     </div>
 </body>
