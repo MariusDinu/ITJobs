@@ -229,14 +229,29 @@ session_start();
     function aplica(user, idJob) {
         console.log(user);
         console.log(idJob);
+        var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("POST", "../User/ScriptsUser/Aplica.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("userName="+user+"&idJob="+idJob);
+    xmlhttp.onload = function() {
+
+      console.log(this.response);
+    }
+   
     }
 
     function logout() {
-        <?php
-        session_unset();
-        session_destroy();
-        ?>
-        console.log('logout successful');
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    xmlhttp.onload = function() {
+
+      window.location.href="../User/LoginRegister.php";
+    }
+    console.log('logout successful');
     }
 </script>
 

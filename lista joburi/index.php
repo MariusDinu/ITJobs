@@ -219,11 +219,17 @@ session_start();
   }
 
   function logout() {
-    <?php
-    session_unset();
-    session_destroy();
-    ?>
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    xmlhttp.onload = function() {
+
+      window.location.href="../User/LoginRegister.php"
+    }
     console.log('logout successful');
+
   }
 </script>
 <!-- Language Dropdown Menu -->

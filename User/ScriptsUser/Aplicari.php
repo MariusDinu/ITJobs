@@ -14,18 +14,20 @@ $sqlSearchCommandIDCV="SELECT ID_CV FROM `user/cv` WHERE `ID_User`='$id'";
 $prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandIDCV);
 $prepare->execute();
 $arrayUserCV=$prepare->fetchAll();
-$idCv=$arrayUserCV[0]["ID_CV"];
-
+if(isset($arrayUserCV[0]["ID_CV"]))
+{$idCv=$arrayUserCV[0]["ID_CV"];
 
 $sqlSearchCommandIDJob="SELECT ID_Job FROM `job/cv` WHERE `ID_CV`='$idCv'";
 $prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandIDJob);
 $prepare->execute();
 $arrayJobCV=$prepare->fetchAll();
-
+if(isset($arrayJobCV)){
 foreach($arrayJobCV as $item){
+
 $sqlSearchCommandJob="SELECT * FROM `job` WHERE `ID`='$item[0]'";
 $prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
 $prepare->execute();
+
 $arrayJob=$prepare->fetchAll();
 echo "
 <div id='job' class='flex items-center justify-between p-5 border-b-2 border-gray-400 hover:bg-gray-100'".$arrayJob[0]['ID']."> 
@@ -43,4 +45,6 @@ echo "
         </div>
     </a>
 </div>
-";}
+";}} else { echo "<div> Nu ai aplicat inca la un job!</div>";}
+}
+else {echo "<div>Nu ti-ai completat cv-ul!</div>";}
