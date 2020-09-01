@@ -102,27 +102,27 @@ session_start();
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md">Nume:</label>
-                <input type="text" name="nume" class="block h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
+                <input type="text" name="nume" class="block h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="nume">
               </div>
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md">Prenume:</label>
-                <input type="text" name="prenume" class="block h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
+                <input type="text" name="prenume" class="block h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="prenume">
               </div>
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md"> Despre mine:</label>
-                <textarea name="descriere" cols="23" rows="5" class="bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
+                <textarea name="descriere" cols="23" rows="5" class="bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="descriere"></textarea>
               </div>
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md">Data nașterii:</label>
-                <input type="date" name="data" class="px-2 py-1 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
+                <input type="date" name="data" class="px-2 py-1 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="nastere">
               </div>
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md">Gen:</label>
-                <select name="gen" class="px-4 py-1 text-sm bg-gray-200 rounded">
+                <select name="gen" class="px-4 py-1 text-sm bg-gray-200 rounded" id="gen">
                   <option>Selectează din listă</option>
                   <option>Masculin</option>
                   <option>Feminin</option>
@@ -135,12 +135,12 @@ session_start();
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md">Email:</label>
-                <input type="text" name="email" class="h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
+                <input type="text" name="email" class="h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="email">
               </div>
 
               <div class="mb-3">
                 <label class="block mb-3 text-sm md:text-md">Număr telefon:</label>
-                <input type="text" name="phone" class="h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500">
+                <input type="text" name="phone" class="h-8 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500" id="phone">
               </div>
 
             </div>
@@ -305,7 +305,10 @@ session_start();
 
     var limbaj = "";
     var limbaje = "";
-
+    var job="";
+    var joburi="";
+    var tehnologii="";
+    var tehnologie="";
     var techGlobal = 0;
 
     function adaugaTehnologii() {
@@ -348,6 +351,10 @@ session_start();
 
     function submitForm() {
       /*<--doar pentru limbaje -->*/
+
+      var limbajCopy="";
+      var jobCopy="";
+      var techCopy="";
       var i = 1;
       while (i <= limbajGlobal) {
         var limbajId = "dateLimbaj" + i;
@@ -365,7 +372,73 @@ session_start();
         }
         i = i + 1;
       }
+      limbajCopy=limbaje;
       limbaje = "";
+
+      /* pentru joburi*/
+      var k = 1;
+      while (k <= jobGlobal) {
+        var jobId = "dateJob" + k;
+        console.log(jobId);
+        if (document.getElementById(jobId) != null) {
+          if (joburi == "") {
+            var job = document.getElementById(jobId).innerHTML;
+            joburi = job;
+            console.log(job);
+          } else {
+            var job = joburi+ "," + document.getElementById(jobId).innerHTML;
+            joburi = job;
+            console.log(job);
+          }
+        }
+        k = k + 1;
+      }
+jobCopy=joburi;
+      joburi= "";
+
+      /* pentru tehnologii*/
+
+       var l = 1;
+      while (l <= techGlobal) {
+        var techId = "dateTech" + l;
+        console.log(techId);
+        if (document.getElementById(techId) != null) {
+          if (tehnologii == "") {
+            var tehnologie = document.getElementById(techId).innerHTML;
+            tehnologii = tehnologie;
+            console.log(tehnologie);
+          } else {
+            var tehnologie = tehnologii+ "," + document.getElementById(techId).innerHTML;
+            tehnologii =tehnologie;
+            console.log(tehnologie);
+          }
+        }
+        l = l + 1;
+      }
+      techCopy=tehnologii;
+      tehnologii= "";
+
+
+    var nume=document.getElementById("nume").value;
+    var prenume=document.getElementById("prenume").value;
+    var email=document.getElementById("email").value;
+    var phone=document.getElementById("phone").value;
+    var descriere=document.getElementById("descriere").value;
+    var nastere=document.getElementById("nastere").value;
+    var gen=document.getElementById("gen");
+    var selectedGen = gen.options[gen.selectedIndex].value;
+/* trimitere catre baza de date*/
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "./ScriptsUser/CVScript.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("joburi="+jobCopy+"&limbaje="+limbajCopy+"&tehnologii="+techCopy+"&nume="+nume+"&prenume="+prenume+"&descriere="+descriere+"&nastere="+nastere+"&gen="+selectedGen+"&email="+email+"&phone="+phone);
+            xmlhttp.onload = function() {
+     console.log( this.response );
+             if(this.response == "true" )
+              {window.location.href="UserPage.php";}
+            
+            }
+event.preventDefault();
     }
   </script>
   <!-- Language Dropdown Menu -->
