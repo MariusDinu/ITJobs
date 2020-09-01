@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="../public/styles.css">
 </head>
 
-<body style="height: 100%">
-    <div class="flex flex-col items-center justify-center w-full h-full py-16 bg-ternary xl:w-1/2">
+<body style="height: 100%; background-image: url(../img/Illustration-User.jpg)" class="bg-contain lg:bg-cover">
+    <div class="flex flex-col items-center justify-center w-full h-full py-16 bg-transparent xl:w-1/2">
         <div id="loginRegisterBox" class="flex flex-col justify-center w-3/4 h-auto max-w-sm p-4 mx-auto bg-white border border-gray-400 rounded-lg shadow appearance-none sm:p-10 md:w-1/2">
 
             <div class="inline-flex mx-auto mb-10 text-xs leading-none text-gray-500 bg-gray-200 border-2 border-gray-300 rounded-full sm:text-lg">
-                <button onclick="toggleForms()" class="inline-flex items-center w-24 px-4 py-2 transition-colors duration-300 ease-in rounded-l-full sm:w-32 focus:outline-none hover:text-black focus:text-secondary active">
-                    <span id="btn-login" class="mx-auto font-medium text-secondary">Autentificare</span>
+                <button onclick="toggleForms()" class="inline-flex items-center w-24 px-4 py-2 transition-colors duration-300 ease-in rounded-l-full sm:w-32 focus:outline-none hover:text-black focus:text-ternary active">
+                    <span id="btn-login" class="mx-auto font-medium text-ternary">Autentificare</span>
                 </button>
-                <button onclick="toggleForms()" class="inline-flex items-center w-24 px-4 py-2 transition-colors duration-300 ease-in rounded-r-full sm:w-32 focus:outline-none hover:text-black focus:text-secondary">
+                <button onclick="toggleForms()" class="inline-flex items-center w-24 px-4 py-2 transition-colors duration-300 ease-in rounded-r-full sm:w-32 focus:outline-none hover:text-black focus:text-ternary">
                     <span id="btn-register" class="mx-auto font-medium">Inregistrare</span>
                 </button>
             </div>
@@ -30,7 +30,7 @@
 
                 <span><input class="inline mr-2 leading-tight" type="checkbox">Retine parola</span>
                 <p id="errorLogin" class="self-center my-4 font-medium text-red-700"></p>
-                <button class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-secondary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="loginUser()">Intra in cont</button>
+                <button class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="loginUser()">Intra in cont</button>
             </form>
 
             <form id="register" class="flex flex-col hidden">
@@ -50,15 +50,15 @@
                 
                 <!--<input type="checkbox" class="check-box"><span>  I agree to the terms and conditions</span>-->
                 <p id="errorRegister" class="self-center my-4 font-medium text-red-700"></p>
-                <button class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-secondary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="registerUser()">Creaza cont</button>
+                <button class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="registerUser()">Creaza cont</button>
             </form>
         </div>
         
         <div id="checkCodePhone" class="hidden w-3/4 h-auto max-w-sm p-4 mx-auto bg-white border border-gray-400 rounded-lg shadow appearance-none sm:p-10 md:w-1/2">
             <form id="checkCode" class='flex flex-col justify-center'>
             <input id="inputCheckCode" class="block w-full px-3 py-2 mb-5 placeholder-gray-600 bg-white border-2 border-gray-300 rounded-lg shadow-md text-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none" placeholder="****" maxlength="4" pattern="[0-9]+" required>
-            <button class="px-4 py-2 mb-3 font-bold text-white rounded bg-secondary hover:bg-primary" onclick="checkCode()">Verifica codul</button>
-            <button class="px-4 py-2 font-semibold text-black bg-transparent border-2 rounded border-secondary hover:text-white hover:bg-secondary" onclick="resendCode()">Retrimite codul</button> </form>
+            <button class="px-4 py-2 mb-3 font-bold text-white rounded bg-ternary hover:bg-primary" onclick="checkCode()">Verifica codul</button>
+            <button class="px-4 py-2 font-semibold text-black bg-transparent border-2 rounded border-ternary hover:text-white hover:bg-ternary" onclick="resendCode()">Retrimite codul</button> </form>
         </div>
     </div>
 </body>
@@ -72,8 +72,8 @@
     function toggleForms() {
         loginForm.classList.toggle('hidden');
         registerForm.classList.toggle('hidden');
-        loginButton.classList.toggle('text-secondary');
-        registerButton.classList.toggle('text-secondary');
+        loginButton.classList.toggle('text-ternary');
+        registerButton.classList.toggle('text-ternary');
     }
 </script>
 <script>
