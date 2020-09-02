@@ -436,7 +436,7 @@ jobCopy=joburi;
      console.log( this.response );
              if(this.response == "true" )
               {window.location.href="UserPage.php";}
-            
+            else {console.log(this.response);}
             }
 event.preventDefault();
     }
