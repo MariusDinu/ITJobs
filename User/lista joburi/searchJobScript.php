@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>it-jobs</title>
-    <link rel="stylesheet" href="../public/styles.css">
+    
 </head>
 </head>
 <body>
@@ -17,16 +17,25 @@ session_start();
 include "../../DB.php";
 $DB=new DB();
 $job=$_POST['job']	;			
-$oras=$_POST['oras'];		
+$oras=$_POST['oras'];
+$user=$_SESSION['user'];		
+$sqlSearchCommand="SELECT ID FROM `user` WHERE `Email`='$user'";
+$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommand);
+$prepare->execute();
+$array=$prepare->fetchAll();
+$id=$array[0]["ID"];
 
-if(empty($oras)){
-$sql="SELECT * FROM job WHERE Titlu LIKE '%$job%'";
+$sqlSearchCommandIDCV="SELECT ID_CV FROM `user/cv` WHERE `ID_User`='$id'";
+$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandIDCV);
+$prepare->execute();
+$arrayUserCV=$prepare->fetchAll();
+if(isset($arrayUserCV[0]["ID_CV"]))
+{$idCv=$arrayUserCV[0]["ID_CV"];}
 
-}
+if(empty($oras))
+{$sql="SELECT * FROM job WHERE Titlu LIKE '%$job%'";}
 else
-	{$sql="SELECT * FROM job WHERE Titlu LIKE '%$job%' AND Oras LIKE '%$oras%'";
-	
-}
+{$sql="SELECT * FROM job WHERE Titlu LIKE '%$job%' AND Oras LIKE '%$oras%'";	}
 
 $q=$DB::obtine_conexiune();
 $lista=$q->prepare($sql);	
@@ -36,7 +45,11 @@ $lista->execute();
 //echo $numarJoburi[0];
 foreach ($q->query($sql) as $row) {
 	//echo "<button id='".$row['ID']."'onclick='aplica(this)'>Aplica</button>";
-	echo "
+    $sqlCommandCompare="SELECT * FROM `job/cv` WHERE ID_Job='".$row['ID']."' and ID_CV='$idCv'";
+    $response=$q->prepare($sql);	
+    $response->execute();
+    
+    echo "
             <div
                 class='h-auto max-w-4xl mx-auto my-5 bg-white border border-gray-400 rounded-lg shadow appearance-none'>
                 <ul>
@@ -56,9 +69,12 @@ foreach ($q->query($sql) as $row) {
                                     <span class='ml-1 text-gray-600'>".$row['Oras']."</span>
                                 </div>
                             </div>
-                        </a>
-                        <button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary' onclick='aplica(`".$_SESSION['user']."`,`".$row['ID']."`)'>Aplica acum</button>
-                    </li></ul></div>";
+                        </a>";
+                        if($response->rowCount()==1)
+                        {echo "<button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary'>Ai aplicat!</button>";}
+                        else
+                        {echo "<button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary' onclick='aplica(`".$_SESSION['user']."`,`".$row['ID']."`)'>Aplica acum</button>";}
+                   echo "</li></ul></div>";
 }
 
 echo "</div>";

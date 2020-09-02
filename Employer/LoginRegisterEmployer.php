@@ -30,7 +30,7 @@
 
         <span><input class="inline mr-2 leading-tight" type="checkbox">Retine parola</span>
         <p id="errorLogin" class="self-center my-4 font-medium text-red-700"></p>
-        <button class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="loginEmployer()">Intra in cont</button>
+        <button type="button" class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="loginEmployer()">Intra in cont</button>
       </form>
 
       <form id="register" class="flex flex-col hidden overflow-auto">
@@ -229,6 +229,7 @@ if ($uploadOk == 0) {
 }*/
 
   ?>
+   -->
 
   <script>
     var x = document.getElementById("login");
@@ -355,7 +356,7 @@ if ($uploadOk == 0) {
     }
 
     function loginEmployer() {
-      document.getElementById("accountDone").innerHTML = "";
+    
       var emailLogin = document.getElementById("EmailEmployerLogin").value;
       var passwordLogin = document.getElementById("PasswordEmployerLogin").value;
 
@@ -382,4 +383,3 @@ if ($uploadOk == 0) {
 
 </html>
 
- -->

@@ -15,7 +15,7 @@ session_start();
 
   <!-- Navbar-->
   <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
-    <a href="../lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
+    <a href="./lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
       <p>it-jobs</p>
     </a>
 
@@ -53,7 +53,7 @@ session_start();
         <span class="ml-2">CV</span>
       </a>
 
-      <a href="./UserPage.php" class="flex items-center py-2 hover:text-secondary md:mx-5">
+      <a href="UserPage.php" class="flex items-center py-2 hover:text-secondary md:mx-5">
         <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 user-circle">
           <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
         </svg>
@@ -205,7 +205,9 @@ session_start();
     /*
     functia aceasta pune un placeholder random pentru fiecare textarea atunci cand dam refresh
 */
-
+function goToCV() {
+    window.location.href = "CVform.php";
+  }
     function test() {
       var items = Array("Exemplu: PHP ", "Exemplu: C++", "Exemplu: Java");
       var item = items[Math.floor(Math.random() * items.length)];

@@ -35,24 +35,24 @@ session_start();
         <div class='absolute right-0 z-50 w-56 mt-5 origin-top-right rounded-md shadow-lg left-5'>
           <div class='bg-white rounded-md shadow-xs'>
             <div class='py-1' role='menu' aria-orientation='vertical'>
-              <a href='../Quizz/concentrareFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de concentrare</a>
-              <a href='../Quizz/creativitateFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de creativitate</a>
-              <a href='../Quizz/inteligentaFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de inteligenta</a>
-              <a href='../Quizz/logicaSecventialaFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de logica</a>
-              <a href='../Quizz/testMBTI_FINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de MBTI</a>
+              <a href='../../Quizz/concentrareFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de concentrare</a>
+              <a href='../../Quizz/creativitateFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de creativitate</a>
+              <a href='../../Quizz/inteligentaFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de inteligenta</a>
+              <a href='../../Quizz/logicaSecventialaFINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de logica</a>
+              <a href='../../Quizz/testMBTI_FINAL.php' class='block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900' role='menuitem'>Test de MBTI</a>
             </div>
           </div>
         </div>
       </div>
 
-      <a href='../User/CVform.php' id='CV' onclick='goToCV()' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+      <a href='../CVform.php' id='CV' onclick='goToCV()' class='flex items-center py-2 hover:text-secondary md:mx-5'>
         <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 document-text'>
           <path fill-rule='evenodd' d='M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z' clip-rule='evenodd'></path>
         </svg>
         <span class='ml-2'>CV</span>
       </a>
 
-      <a href='../User/UserPage.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+      <a href='../UserPage.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
         <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 user-circle'>
           <path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z' clip-rule='evenodd'></path>
         </svg>

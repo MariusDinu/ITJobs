@@ -14,7 +14,7 @@ session_start();
 <body>
     <!-- Navbar-->
     <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
-        <a href="../lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
+        <a href="../User/lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
             <p>it-jobs</p>
         </a>
 
@@ -52,7 +52,7 @@ session_start();
                 <span class="ml-2">CV</span>
             </a>
 
-            <a href="./UserPage.php" class="flex items-center py-2 hover:text-secondary md:mx-5">
+            <a href="../User/UserPage.php" class="flex items-center py-2 hover:text-secondary md:mx-5">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 user-circle">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
                 </svg>
@@ -153,7 +153,21 @@ session_start();
     }
     ?>
     var rate = 0;
+    function goToCV() {
+    window.location.href = "../User/CVform.php";
+  }
+    function logout() {
+        var xmlhttp = new XMLHttpRequest();
 
+    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    xmlhttp.onload = function() {
+
+      window.location.href="../User/LoginRegister.php"
+    }
+    console.log('logout successful');
+    }
     function result() {
         var children = document.getElementById('formaIntrebari').childNodes;
         var raspunsuri = document.getElementsByTagName('input');

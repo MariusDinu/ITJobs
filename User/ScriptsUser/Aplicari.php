@@ -31,7 +31,7 @@ $prepare->execute();
 $arrayJob=$prepare->fetchAll();
 echo "
 <div id='job' class='flex items-center justify-between p-5 border-b-2 border-gray-400 hover:bg-gray-100'".$arrayJob[0]['ID']."> 
-    <a href='#'>
+    <a href='../User/ScriptsUser/Job.php?jobId=".$arrayJob[0]['ID']."'>
         <span class='text-lg text-primary'>".$arrayJob[0]['Titlu']."</span>
         <div class='flex items-center'>
             <div class='flex items-center mr-2'>
