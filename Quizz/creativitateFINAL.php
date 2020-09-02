@@ -149,7 +149,7 @@ session_start();
     <?php
     if (isset($_SESSION['user'])) {
         $a = $_SESSION['user'];
-        print "var user=$a";
+        print "var user='$a';";
     }
     ?>
     var rate = 0;

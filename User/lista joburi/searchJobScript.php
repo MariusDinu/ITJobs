@@ -41,7 +41,7 @@ foreach ($q->query($sql) as $row) {
                 class='h-auto max-w-4xl mx-auto my-5 bg-white border border-gray-400 rounded-lg shadow appearance-none'>
                 <ul>
                     <li id='jobNumber' class='flex items-center justify-between p-5 border-b-2 border-gray-400 hover:bg-gray-100'>
-                        <a href='../ScriptsEmployer/Job.php?jobId=".$row['ID']."'>
+                        <a href='../ScriptsUser/Job.php?jobId=".$row['ID']."'>
                             
                             <span class='text-lg text-primary'>".$row['Titlu']."</span>
                             <div class='flex items-center'>
@@ -57,7 +57,7 @@ foreach ($q->query($sql) as $row) {
                                 </div>
                             </div>
                         </a>
-                       
+                        <button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary' onclick='aplica(`".$_SESSION['user']."`,`".$row['ID']."`)'>Aplica acum</button>
                     </li></ul></div>";
 }
 

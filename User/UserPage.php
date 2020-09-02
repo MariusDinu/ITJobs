@@ -15,7 +15,7 @@ session_start();
 
   <!-- Navbar-->
   <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
-    <a href="../lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
+    <a href="../User/lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
       <p>it-jobs</p>
     </a>
 
