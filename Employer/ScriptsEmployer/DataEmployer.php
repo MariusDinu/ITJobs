@@ -16,5 +16,5 @@ echo "
 <span id='profilEmailUser'>" . $array[0]['E-mail'] . "</span>
 <hr class='my-3'> 
 <span class='mr-6 text-gray-600'>Telefon:</span>
-<span id='profilPhoneUser'>(+40)" . $array[0]['PhoNumber'] . "</span>
+<span id='profilPhoneUser'>" . $array[0]['PhoNumber'] . "</span>
 <hr class='my-3'>";

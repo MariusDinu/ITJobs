@@ -154,7 +154,7 @@ var code = 0;
 function checkEmail(){
             var emailScript = document.getElementById("EmailEmployerRegister").value;
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "SearchEmployer.php", true);
+            xmlhttp.open("POST", "../Employer/ScriptsEmployer/SearchEmployer.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + emailScript);
             xmlhttp.onload = function() {
@@ -240,7 +240,7 @@ function registerEmployer()
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
                 xmlhttp.onload = function() {
-                    window.location.href = "LoginRegisterEmployer.php?succes=2"; 
+                    window.location.href = "./LoginRegisterEmployer.php?succes=2"; 
                 }
                    uploadFile(email);
             } else {
@@ -261,7 +261,7 @@ function loginEmployer() {
             xmlhttp.onload = function() {
                 if (this.response == "true") {
 
-                    window.location.href = "EmployerPage.php";
+                    window.location.href = "./EmployerPage.php";
                     document.getElementById("errorLogin").innerHTML = "";
                 } else if(this.response=="false") {
                     document.getElementById("errorLogin").innerHTML = "Parola sau email incorect!";

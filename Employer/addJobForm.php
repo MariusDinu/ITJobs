@@ -13,7 +13,7 @@ session_start();
 <body>
    <!-- Navbar-->
    <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
-      <a href="../lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
+      <a href="../Employer/ListaJoburiEmployer/index.php" class="font-bold text-grey-800 md:text-2xl">
          <p>it-jobs</p>
       </a>
 
@@ -136,6 +136,9 @@ var xmlhttp = new XMLHttpRequest();
     xmlhttp.send("titlu="+titlu+"&tip="+tip+"&oras="+oras+"&studii="+nivelStudii+"&cariera="+nivelCariera+"&salariu="+salariu+"&companie="+descriereCompanie+"&job="+descriereaJobului+"&candidat="+candidatulIdeal);
     xmlhttp.onload = function() {
       console.log(this.response);
+      if(this.response=="true")
+      {window.location.href="./EmployerPage.php"}
+      else {}
     }
     event.preventDefault();
 

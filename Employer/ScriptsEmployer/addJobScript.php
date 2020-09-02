@@ -23,8 +23,9 @@ $array=$prepare->fetchAll();
 $idEmployer=$array[0]["ID"];
 
 
-$sql="INSERT INTO `job`(`ID_angajator`, `Titlu`, `Oras`, `NivelStudii`, `Departament`, `Salariu`, `NivelCariera`, `TipJob`, `CandidatIdeal`, `DescriereJob`,`DescriereCompanie`) VALUES ('$idEmployer','$titlu','$oras','$studii','$salariu','$cariera','$tip','$candidat','$job','$companie')";
+$sql="INSERT INTO `job`(`ID_angajator`, `Titlu`, `Oras`, `NivelStudii`, `Salariu`, `NivelCariera`, `TipJob`, `CandidatIdeal`, `DescriereJob`, `DescriereCompanie`) VALUES ('$idEmployer','$titlu','$oras','$studii','$salariu','$cariera','$tip','$candidat','$job','$companie')";
 $q=$DB::obtine_conexiune()->prepare($sql);	//fac conexiunea la baza de date
-echo $sql;
-$q->execute();
+if($q->execute())
+echo "true";
+else echo "false";
 ?>
