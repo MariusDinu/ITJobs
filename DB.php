@@ -1,6 +1,6 @@
 <?php
 
-class DB{
+class DB {
     private static $conexiune_bd = NULL;
     public static function obtine_conexiune(){
         if (is_null(self::$conexiune_bd))

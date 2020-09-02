@@ -19,7 +19,7 @@ session_start();
 
       <div class="flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0">
 
-         <a href="./UserPage.php" class="flex items-center py-2 hover:text-secondary md:mx-5">
+         <a href="./EmployerPage.php" class="flex items-center py-2 hover:text-secondary md:mx-5">
             <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 user-circle">
                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
             </svg>
@@ -107,104 +107,53 @@ session_start();
                         <textarea id="candidat" name="candidat" class="w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
                      </div>
                   </div>
-                  <button type="button" class="self-center inline-block w-48 px-4 py-2 mt-8 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline">Adauga job</button>
+                  <button type="button" onclick="addJob()" class="self-center inline-block w-48 px-4 py-2 mt-8 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline">Adauga job</button>
                </form>
             </div>
          </div>
       </div>
    </main>
 
-<!--  ---------------------- Old ---------------------- -->
-   <div class="hidden carapace">
-      <div id="shel" class="shell">
-         <form class="subform" method="post">
 
-            <div class="c1">
-               <div class="job">
-                  <p class="t">Titlu job:
-                     <input class="i" type="text" name="job" id="j">
-                  </p>
-               </div>
-
-               <div class="oras">
-                  <p class="t">Oraș:
-                     <input class="i" type="text" name="oras" id="oras">
-                  </p>
-               </div>
-            </div>
-            <br></br>
-
-            <div class="c2">
-               <div class="NS">
-                  <p class="t">Nivel studii:
-                     <input class="i" type="text" name="studii" id="studii">
-                  </p>
-               </div>
-
-               <div class="DP">
-                  <p class="t">Departament:
-                     <input class="i" type="text" name="dep" id="dep">
-                  </p>
-               </div>
-               <br></br>
-
-               <div class="c3">
-                  <div class="SAL">
-                     <p class="t"> Salariu:
-                        <input class="i" type="text" name="salariu" id="salariu">
-                     </p>
-                  </div>
-
-                  <div class="NC">
-                     <p class="t"> Nivel carieră:
-                        <input class="i" type="text" name="cariera" id="cariera">
-                     </p>
-                  </div>
-               </div>
-               <br></br>
-
-               <div class="c4">
-                  <div class="TJ">
-                     <p class="t">Tip job:
-                        <input class="i" type="text" name="tip" id="tip">
-                     </p>
-                  </div>
-               </div>
-               <br></br>
-
-               <p> Candidatul ideal:</p><br>
-               <textarea id="candidat" name="candidat" rows="10" cols="50"></textarea><br>
-
-               <p> Descrierea jobului:</p><br>
-               <textarea id="descriere" name="descriere" rows="10" cols="50">
-</textarea><br>
-
-               <p> Descrierea companiei:</p><br>
-               <textarea id="descriereC" name="descriereC" rows="10" cols="50"></textarea><br>
-
-               <button type="submit" name="submit"></button>
-         </form>
-      </div>
-   </div>
+     
 
 </body>
-<?php
-if (isset($_POST['submit'])) {
+<script>
+function addJob(){
+var titlu=document.getElementById('titlu').value;
+var tip=document.getElementById('tip').value;
+var oras=document.getElementById('oras').value;
+var nivelStudii=document.getElementById('studii').value;
+var nivelCariera=document.getElementById('cariera').value;
+var salariu=document.getElementById('salariu').value;
+var descriereCompanie=document.getElementById('companie').value;
+var descriereaJobului=document.getElementById('job').value;
+var candidatulIdeal=document.getElementById('candidat').value;
 
-   $_SESSION['job'] = $_POST['job'];
-   $_SESSION['oras'] = $_POST['oras'];
-   $_SESSION['studii'] = $_POST['studii'];
-   $_SESSION['dep'] = $_POST['dep'];
-   $_SESSION['salariu'] = $_POST['salariu'];
-   $_SESSION['cariera'] = $_POST['cariera'];
-   $_SESSION['tip'] = $_POST['tip'];
-   $_SESSION['candidat'] = $_POST['candidat'];
-   $_SESSION['descriere'] = $_POST['descriere'];
-   $_SESSION['descriereC'] = $_POST['descriereC'];
-   print "echo";
-   header("Location:addJobScript.php");
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "./ScriptsEmployer/addJobScript.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("titlu="+titlu+"&tip="+tip+"&oras="+oras+"&studii="+nivelStudii+"&cariera="+nivelCariera+"&salariu="+salariu+"&companie="+descriereCompanie+"&job="+descriereaJobului+"&candidat="+candidatulIdeal);
+    xmlhttp.onload = function() {
+      console.log(this.response);
+    }
+    event.preventDefault();
+
+
 }
-?>
+function logout() {
+        var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.open("POST", "../Employer/ScriptsEmployer/Logout.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    xmlhttp.onload = function() {
+
+      window.location.href="../Employer/LoginRegisterEmployer.php"
+    }
+    console.log('logout successful');
+    }
+</script>
 <!-- Language Dropdown Menu -->
 <script>
    const languageMenu = document.getElementById("languageMenu")

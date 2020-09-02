@@ -210,17 +210,6 @@ function checkPassword(){
             }
 }
 
-function resendSms(){
-  var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "SendSmsUserRegister.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.send("phone=" + phone);
-            xmlhttp.onload = function() {
-                var codeCopy = this.response;
-                setCode(codeCopy);
-            }
-            event.preventDefault();
-}
 
 function setEmailPassPhone(emailCopy, passCopy, phoneCopy) {
             email = emailCopy;
@@ -247,7 +236,7 @@ function registerEmployer()
                 document.getElementById('errorCode').innerHTML="";
 
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "EmployerRegister.php", true);
+                xmlhttp.open("POST", "./ScriptsEmployer/EmployerRegister.php", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
                 xmlhttp.onload = function() {
@@ -266,7 +255,7 @@ function loginEmployer() {
             var passwordLogin = document.getElementById("PasswordEmployerLogin").value; 
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "EmployerLogin.php", true);
+            xmlhttp.open("POST", "./ScriptsEmployer/EmployerLogin.php", true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + emailLogin + "&password=" + passwordLogin);
             xmlhttp.onload = function() {
