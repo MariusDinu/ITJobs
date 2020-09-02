@@ -1,0 +1,7 @@
+Ca sa mearga trbuie instalat composer.
+
+Si dupa, cu cmd mergi in folderul unde e config.php.
+
+Si apelezi asta: composer require google/apiclient:"^2.0".
+
+Ar putea sa mearga doar si daca pui composer.json si composer.lock in folder.
