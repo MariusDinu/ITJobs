@@ -3,16 +3,19 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>it-jobs</title>
+    <title>CV Aplicant </title>
     <link rel="stylesheet" href="../../public/styles.css">
+  </head>
 </head>
-</head>
+
 <body>
-<?php if (isset($_SESSION['userE'])) {
+  <?php if (isset($_SESSION['userE'])) {
     echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
     <a href='../ListaJoburiEmployer/index.php' class='font-bold text-grey-800 md:text-2xl'>
       <p>it-jobs</p>
@@ -117,66 +120,127 @@ session_start();
     </nav>";
   } ?>
 
-<?php
-$cv=$_GET['cv'];
+  <?php
+    $cv = $_GET['cv'];
+    include "../../DB.php";
+    $DB = new DB();
+    $sqlSearchCommandCV = "SELECT * FROM `cv` WHERE `ID`='$cv'";
+    $prepare = $DB::obtine_conexiune()->prepare($sqlSearchCommandCV);
+    $prepare->execute();
+    $arrayCV = $prepare->fetchAll();
+  ?>
 
-include "../../DB.php";
-$DB=new DB();
-$sqlSearchCommandCV="SELECT * FROM `cv` WHERE `ID`='$cv'";
-$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandCV);
-$prepare->execute();
-$arrayCV=$prepare->fetchAll();
-if($arrayCV!=null)
-foreach($arrayCV as $cv)
-{
-echo "
-<div>CV:".$cv['Nume']." ".$cv['Prenume']." </div>
-<div id='cv".$cv['ID']."'>
-<p>".$cv['Nume']."</p><p>".$cv['Prenume']."</p>
-<p>"."".$cv['Data_nastere']."</p>
-<p>".$cv['Descriere']."</p>
-<p>".$cv['Email']."</p>
-<p>".$cv['Telefon']."</p>
-<p>".$cv['Gen']."</p>
-<p>".$cv['Limbaje']."</p>
-<p>".$cv['Joburi']."</p>
-<p>".$cv['Tehnologii']."</p>
-</div>";
+  <main class="min-h-screen overflow-hidden bg-gray-200">
+    <div class="w-10/12 h-auto max-w-4xl mx-auto">
+      <div class="h-auto max-w-4xl mx-auto mt-5 mb-10 border border-gray-400 rounded-lg shadow appearance-none bg-secondary">
+        <h1 class="m-5 text-4xl text-white">
+          <?php 
+            if ($arrayCV != null)
+              foreach ($arrayCV as $cv) {
+                echo"CV - ".$cv['Nume'].' '.$cv['Prenume'];
+              }?>
+        </h1>
+        <div class="h-auto max-w-4xl p-5 mx-auto mt-5 bg-white border border-gray-400 rounded-bl-lg rounded-br-lg shadow appearance-none md:p-10">
+          <?php
+          if ($arrayCV != null)
+            foreach ($arrayCV as $cv) {
+              echo "
+                  <div id='cv" . $cv['ID'] . "'>
+                    <h3 class='mb-3 font-medium text-md md:text-2xl text-primary'>Informații cu caracter personal</h3>
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Nume:</label>
+                    <span>" . $cv['Nume'] . "</span>
+                    </div>
+                    
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Prenume:</label>
+                    <span>" . $cv['Prenume'] . "</span>
+                    </div>
+                    
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Data nastere:</label>
+                    <span>" . "" . $cv['Data_nastere'] . "</span>
+                    </div>
 
-}
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Gen:</label>
+                    <span>" . $cv['Gen'] . "</span>
+                    </div>
+
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Descriere personala:</label>
+                    <span>" . $cv['Descriere'] . "</span>
+                    </div>
+                    
+                    <h3 class='my-3 font-medium text-md md:text-2xl text-primary'>Date de contact</h3>
+                    
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Email:</label>
+                    <span>" . $cv['Email'] . "</span>
+                    </div>
+                    
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Telefon:</label>
+                    <span>" . $cv['Telefon'] . "</span>
+                    </div>
+                    
+                    <h3 class='my-3 font-medium text-md md:text-2xl text-primary'>Experienta profesionala</h3>
+                    
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Limbaje de programare:</label>
+                    <span>" . $cv['Limbaje'] . "</span>
+                    </div>
+                    
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Experienta profesionala:</label>
+                    <span>" . $cv['Joburi'] . "</span>
+                    </div>
+
+                    <div>
+                    <label class='mb-3 text-sm md:text-md'>Tehnologii cunoscute:</label>
+                    <span>" . $cv['Tehnologii'] . "</span>
+                    </div>
+                  </div>";
+            }
 
 
 
-?>
+          ?>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<script type="text/javascript">
-   
 
-   function logout() {
-   var xmlhttp = new XMLHttpRequest();
 
-   xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
-   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   xmlhttp.send();
-   xmlhttp.onload = function() {
 
-     window.location.href="../LoginRegisterEmployer.php";
-   }
-   console.log('logout successful');
-   }
-   function AddJob() {
-   window.location.href = "../AddJobForm.php";
- }
-</script>
+  <script type="text/javascript">
+    function logout() {
+      var xmlhttp = new XMLHttpRequest();
 
-<!-- Language Dropdown Menu -->
-<script>
- const languageMenu = document.getElementById("languageMenu")
- languageMenu.style.display = 'none';
- document.getElementById("lang").addEventListener("click", () => {
-   languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
- });
-</script>
+      xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+      xmlhttp.onload = function() {
+
+        window.location.href = "../LoginRegisterEmployer.php";
+      }
+      console.log('logout successful');
+    }
+
+    function AddJob() {
+      window.location.href = "../AddJobForm.php";
+    }
+  </script>
+
+  <!-- Language Dropdown Menu -->
+  <script>
+    const languageMenu = document.getElementById("languageMenu")
+    languageMenu.style.display = 'none';
+    document.getElementById("lang").addEventListener("click", () => {
+      languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
+    });
+  </script>
 
 
 

@@ -233,7 +233,7 @@ session_start();
         console.log(idJob);
         var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "../User/ScriptsUser/Aplica.php", true);
+    xmlhttp.open("POST", "../ScriptsUser/Aplica.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("userName="+user+"&idJob="+idJob);
     xmlhttp.onload = function() {

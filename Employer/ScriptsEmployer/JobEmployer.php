@@ -1,20 +1,17 @@
-
-
 <?php
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>it-jobs</title>
+    <title>Job-urile mele</title>
     <link rel="stylesheet" href="../../public/styles.css">
+  </head>
 </head>
-</head>
+
 <body>
-<?php if (isset($_SESSION['userE'])) {
+  <?php if (isset($_SESSION['userE'])) {
     echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
     <a href='../ListaJoburiEmployer/index.php' class='font-bold text-grey-800 md:text-2xl'>
       <p>it-jobs</p>
@@ -117,71 +114,89 @@ session_start();
             </div>
         </div>
     </nav>";
-  } ?>
-<?php 
-$job=$_GET['myJob'];
-include "../../DB.php";
-$DB=new DB();
-$sqlSearchCommandJob="SELECT * FROM `job/cv` WHERE `ID_Job`='$job'";
-$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
-$prepare->execute();
-$arrayJob=$prepare->fetchAll();
+  }
+  ?>
 
-if($arrayJob!=null)
-{foreach($arrayJob as $item)
-{
-     $idCV=$item['ID_CV'];
-     $sqlSearchCommandCV="SELECT * FROM `cv` WHERE `ID`='$idCV'";
-$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandCV);
-$prepare->execute();
-$arrayCV=$prepare->fetchAll();
-if($arrayCV!=null)
-foreach($arrayCV as $cv)
-{
-echo "<div id='cv".$cv['ID']."'>
-<a href='../ScriptsEmployer/CV.php?cv=".$cv['ID']."'>
-<p>".$cv['Nume']."</p>
-<p>".$cv['Prenume']."</p>
-<p>".$cv['ID']."</p></a></div><br>";
+  <?php
+  $job = $_GET['myJob'];
+  include "../../DB.php";
+  $DB = new DB();
+  $sqlSearchCommandJob = "SELECT * FROM `job/cv` WHERE `ID_Job`='$job'";
+  $prepare = $DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
+  $prepare->execute();
+  $arrayJob = $prepare->fetchAll();
+  $applicantCount = 0;
+  if ($arrayJob != null) {
+    foreach ($arrayJob as $item) {
+      $applicantCount+=1;
+    }
+  }
+  ?>
 
-}
-}
+  <div class='w-10/12 h-auto max-w-4xl mx-auto' id='parinte'>
+    <p id='applicant-counter' class='mt-5 text-4xl lg:text-5xl'><?php echo $applicantCount ?> Candidati</p>
+    <div id='afisare' class="flex flex-col h-auto max-w-4xl mx-auto my-5 bg-white border border-gray-400 rounded-lg shadow appearance-none">
+      <?php
+      if ($arrayJob != null) {
+        foreach ($arrayJob as $item) {
+          $idCV = $item['ID_CV'];
+          $sqlSearchCommandCV = "SELECT * FROM `cv` WHERE `ID`='$idCV'";
+          $prepare = $DB::obtine_conexiune()->prepare($sqlSearchCommandCV);
+          $prepare->execute();
+          $arrayCV = $prepare->fetchAll();
+          if ($arrayCV != null)
+            foreach ($arrayCV as $cv) {
+              echo "
+            <a href='../ScriptsEmployer/CV.php?cv=" . $cv['ID'] . "' id='cv" . $cv['ID'] . "' class='flex flex-col justify-start p-5 border-b-2 border-gray-400 hover:bg-gray-100'>
+              <p class='text-lg text-primary'>" . $cv['Nume'] . ' ' . $cv['Prenume'] . "</p>
+              <div class='flex text-sm'>
+                <p class='mr-5'>" . $cv['Email'] . "</p>
+                <p>" . $cv['Telefon'] . "</p>
+              </div>
+            </a>
+            ";
+            }
+        }
+      } else {
+        echo "
+    <div class='flex flex-col items-center justify-center h-48 max-w-md p-5 mx-auto my-10 bg-white border border-gray-400 rounded-lg shadow appearance-none md:max-w-xl' id='anunt' style='display:none;'>
+      <svg viewBox='0 0 20 20' fill='#F9A826' class='w-16 h-16 exclamation'>
+          <path fill-rule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clip-rule='evenodd'></path>
+      </svg>
+      <p class='text-2xl'>0 Candidati</p>
+      <p>Nu a aplicat nimeni la job-ul acesta</p>
+    </div>
+    ";
+      }
+      ?>
+    </div>
+  </div>
 
+  <script type="text/javascript">
+    function logout() {
+      var xmlhttp = new XMLHttpRequest();
 
+      xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+      xmlhttp.onload = function() {
 
+        window.location.href = "../LoginRegisterEmployer.php";
+      }
+      console.log('logout successful');
+    }
 
-}
-else {echo "Nu a aplicat nimeni!";}
-?>
-<script type="text/javascript">
-   
+    function AddJob() {
+      window.location.href = "../AddJobForm.php";
+    }
+  </script>
 
-   function logout() {
-   var xmlhttp = new XMLHttpRequest();
-
-   xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
-   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   xmlhttp.send();
-   xmlhttp.onload = function() {
-
-     window.location.href="../LoginRegisterEmployer.php";
-   }
-   console.log('logout successful');
-   }
-   function AddJob() {
-   window.location.href = "../AddJobForm.php";
- }
-</script>
-
-<!-- Language Dropdown Menu -->
-<script>
- const languageMenu = document.getElementById("languageMenu")
- languageMenu.style.display = 'none';
- document.getElementById("lang").addEventListener("click", () => {
-   languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
- });
-</script>
-
-
-
+  <!-- Language Dropdown Menu -->
+  <script>
+    const languageMenu = document.getElementById("languageMenu")
+    languageMenu.style.display = 'none';
+    document.getElementById("lang").addEventListener("click", () => {
+      languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
+    });
+  </script>
 </html>
