@@ -8,7 +8,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employer Page</title>
+  <title>Profil Angajator</title>
   <link rel="stylesheet" href="../public/styles.css">
 </head>
 
@@ -19,8 +19,6 @@ session_start();
     <a href="../Employer/ListaJoburiEmployer/index.php" class="font-bold text-grey-800 md:text-2xl">
       <p>it-jobs</p>
     </a>
-
-    
 
       <a href="#" id="CV" onclick="AddJob()" class="flex items-center py-2 hover:text-secondary md:mx-5">
         <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 document-text">
@@ -76,8 +74,8 @@ session_start();
         <div class="self-center w-full h-full p-5" id="profil"></div>
       </div>
 
-      <!-- User's Applications -->
-      <div class="h-auto max-w-4xl mx-auto mt-5 border border-gray-400 rounded-lg shadow appearance-none bg-ternary">
+      <!-- Employer's Listings -->
+      <div class="h-auto max-w-4xl mx-auto mt-5 border border-gray-400 rounded-lg shadow appearance-none bg-secondary">
         <h1 class="m-5 text-4xl text-white">Joburile mele</h1>
         <div class="h-auto max-w-4xl mx-auto mt-5 bg-white border border-gray-400 rounded-bl-lg rounded-br-lg shadow appearance-none" id="afisareAplicari"></div>
       </div>
