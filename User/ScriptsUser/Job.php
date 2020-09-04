@@ -3,19 +3,23 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>it-jobs</title>
     <link rel="stylesheet" href="../../public/styles.css">
+  </head>
 </head>
-</head>
+
 <body>
-<?php if (isset($_SESSION['user'])) {
+  <?php if (isset($_SESSION['user'])) {
     echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
     <a href='../lista joburi/index.php' class='font-bold text-grey-800 md:text-2xl'>
-      <p>it-jobs</p>
+    <img src='../../img/Logo.png' alt='logo' class='inline w-12'></img>
+    <p class='inline'>jobs</p>
     </a>
 
     <div class='flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0'>
@@ -93,7 +97,8 @@ session_start();
     // Navbar - not logged in
     echo " <nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
         <a href='./index.php' class='font-bold text-grey-800 md:text-2xl'>
-            <p>it-jobs</p>
+        <img src='../../img/Logo.png' alt='logo' class='inline w-12'></img>
+        <p class='inline'>jobs</p>
         </a>
 
         <div class='flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0'>
@@ -141,76 +146,134 @@ session_start();
     </nav>";
   } ?>
 
+  <?php
+  $job = $_GET['jobId'];
+  include "../../DB.php";
+  $DB = new DB();
+
+  $sqlSearchCommandJob = "SELECT * FROM `job` WHERE `ID`='$job'";
+  $prepare = $DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
+  $prepare->execute();
+  $arrayJob = $prepare->fetchAll();
+  if ($arrayJob != null) {
+    foreach ($arrayJob as $item)
+      echo "
+      <main class='min-h-screen overflow-hidden bg-gray-200'>
+    <div class='w-10/12 h-auto max-w-4xl mx-auto'>
+      <div class='h-auto max-w-4xl mx-auto mt-5 mb-10 border border-gray-400 rounded-lg shadow appearance-none bg-ternary'>
+        <h1 class='m-5 text-4xl text-white'><div>" . $item['Titlu'] . "</div></h1>
+        <div class='h-auto max-w-4xl p-5 mx-auto mt-5 bg-white border border-gray-400 rounded-bl-lg rounded-br-lg shadow appearance-none md:p-10'>
+          <div id='form' class='flex flex-col'>
+            <div class='flex flex-wrap justify-center mb-10 bg-gray-200 rounded-lg'>
+              <div class='flex flex-col items-center mr-5'>
+                <div class='flex items-center self-end mb-5'>
+                  <label for='titlu' class='text-sm text-gray-700 sm:text-md'>Titlu job:</label>
+                  <p class='ml-2'>".$item['Titlu']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='tip' class='text-sm text-gray-700 sm:text-md'>Tip de job:</label>
+                  <p class='ml-2'>".$item['TipJob']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='oras' class='text-sm text-gray-700 sm:text-md'>Oras:</label>
+                  <p class='ml-2'>".$item['Oras']."</p>
+                </div>
+                
+              </div>
+              <div class='flex flex-col items-center sm:ml-5'>
+                <div class='flex items-center self-end mb-5'>
+                  <label for='studii' class='text-sm text-gray-700 sm:text-md'>Nivel de studii:</label>
+                  <p class='ml-2'>".$item['NivelStudii']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='cariera' class='text-sm text-gray-700 sm:text-md'>Nivel cariera:</label>
+                  <p class='ml-2'>".$item['NivelCariera']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='salariu' class='text-sm text-gray-700 sm:text-md'>Salariu:</label>
+                  <p class='ml-2'>".$item['Salariu']."</p>
+                </div>
+                
+              </div>
+            </div>
+            <div class='flex flex-col justify-evenly lg:flex-row'>
+              <div class='flex flex-col items-center justify-center mb-5'>
+                <label for='companie' class='block mb-3'>Descrierea companiei</label>
+                <textarea readonly id='companie' name='companie' class='w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500'>".$item['DescriereCompanie']."</textarea>
+              </div>
+              <div class='flex flex-col items-center justify-center mb-5'>
+                <label for='job' class='block mb-3'>Descrierea job-ului</label>
+                <textarea readonly id='job' name='job' class='w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500'>".$item['DescriereJob']."</textarea>
+              </div>
+              <div class='flex flex-col items-center justify-center mb-5'>
+                <label for='candidat' class='block mb-3'>Candidatul ideal</label>
+                <textarea readonly id='candidat' name='candidat' class='w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500'>".$item['CandidatIdeal']."</textarea>
+              </div>
+            </div>
+                <button class='self-center inline-block w-48 px-4 py-2 mt-8 font-bold text-white transition-colors duration-300 ease-in rounded bg-secondary hover:bg-primary focus:outline-none focus:shadow-outline' onclick='aplica(`" . $_SESSION['user'] . "`,`" . $item['ID'] . "`)'>Aplica acum</button>";
+            }
+            ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+      ";
+  }
 
 
+  
 
+  ?>
+  <script type="text/javascript">
+    function aplica(user, idJob) {
+      console.log(user);
+      console.log(idJob);
+      var xmlhttp = new XMLHttpRequest();
 
+      xmlhttp.open("POST", "../ScriptsUser/Aplica.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("userName=" + user + "&idJob=" + idJob);
+      xmlhttp.onload = function() {
 
-<?php
-$job=$_GET['jobId'];
-include "../../DB.php";
-$DB=new DB();
+        console.log(this.response);
+      }
 
-$sqlSearchCommandJob="SELECT * FROM `job` WHERE `ID`='$job'";
-$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
-$prepare->execute();
-
-$arrayJob=$prepare->fetchAll();
-if($arrayJob!=null)
-{foreach($arrayJob as $item)
-echo "<div>".$item['ID']."</div>
-<button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary' onclick='aplica(`".$_SESSION['user']."`,`".$item['ID']."`)'>Aplica acum</button>
-";}
-
-?>
-
-
-<script type="text/javascript">
-   
-   function aplica(user, idJob) {
-        console.log(user);
-        console.log(idJob);
-        var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open("POST", "../ScriptsUser/Aplica.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("userName="+user+"&idJob="+idJob);
-    xmlhttp.onload = function() {
-
-      console.log(this.response);
     }
-   
-    }
+
     function logout() {
-    var xmlhttp = new XMLHttpRequest();
+      var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
-    xmlhttp.onload = function() {
+      xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+      xmlhttp.onload = function() {
 
-      window.location.href="../LoginRegister.php";
+        window.location.href = "../LoginRegister.php";
+      }
+      console.log('logout successful');
     }
-    console.log('logout successful');
-    }
-    
-</script>
+  </script>
 
-<!-- Language Dropdown Menu -->
-<script>
-  const languageMenu = document.getElementById("languageMenu")
-  languageMenu.style.display = 'none';
-  document.getElementById("lang").addEventListener("click", () => {
-    languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
-  });
+  <!-- Language Dropdown Menu -->
+  <script>
+    const languageMenu = document.getElementById("languageMenu")
+    languageMenu.style.display = 'none';
+    document.getElementById("lang").addEventListener("click", () => {
+      languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
+    });
 
-/*<!-- Test Dropdown Menu -->*/
-   const testMenu = document.getElementById("testMenu")
-  testMenu.style.display = 'none';
-  document.getElementById("tests").addEventListener("click", () => {
-    testMenu.style.display = testMenu.style.display === 'none' ? '' : 'none';
-  });
-</script>
+    /*<!-- Test Dropdown Menu -->*/
+    const testMenu = document.getElementById("testMenu")
+    testMenu.style.display = 'none';
+    document.getElementById("tests").addEventListener("click", () => {
+      testMenu.style.display = testMenu.style.display === 'none' ? '' : 'none';
+    });
+  </script>
 
 
 

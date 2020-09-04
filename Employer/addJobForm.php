@@ -14,7 +14,8 @@ session_start();
    <!-- Navbar-->
    <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
       <a href="../Employer/ListaJoburiEmployer/index.php" class="font-bold text-grey-800 md:text-2xl">
-         <p>it-jobs</p>
+         <img src='../img/Logo.png' alt='logo' class='inline w-12'></img>
+         <p class='inline'>jobs</p>
       </a>
 
       <div class="flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0">
@@ -115,47 +116,48 @@ session_start();
    </main>
 
 
-     
+
 
 </body>
 <script>
-function addJob(){
-var titlu=document.getElementById('titlu').value;
-var tip=document.getElementById('tip').value;
-var oras=document.getElementById('oras').value;
-var nivelStudii=document.getElementById('studii').value;
-var nivelCariera=document.getElementById('cariera').value;
-var salariu=document.getElementById('salariu').value;
-var descriereCompanie=document.getElementById('companie').value;
-var descriereaJobului=document.getElementById('job').value;
-var candidatulIdeal=document.getElementById('candidat').value;
+   function addJob() {
+      var titlu = document.getElementById('titlu').value;
+      var tip = document.getElementById('tip').value;
+      var oras = document.getElementById('oras').value;
+      var nivelStudii = document.getElementById('studii').value;
+      var nivelCariera = document.getElementById('cariera').value;
+      var salariu = document.getElementById('salariu').value;
+      var descriereCompanie = document.getElementById('companie').value;
+      var descriereaJobului = document.getElementById('job').value;
+      var candidatulIdeal = document.getElementById('candidat').value;
 
-var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", "./ScriptsEmployer/addJobScript.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("titlu="+titlu+"&tip="+tip+"&oras="+oras+"&studii="+nivelStudii+"&cariera="+nivelCariera+"&salariu="+salariu+"&companie="+descriereCompanie+"&job="+descriereaJobului+"&candidat="+candidatulIdeal);
-    xmlhttp.onload = function() {
-      console.log(this.response);
-      if(this.response=="true")
-      {window.location.href="./EmployerPage.php"}
-      else {}
-    }
-    event.preventDefault();
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("POST", "./ScriptsEmployer/addJobScript.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("titlu=" + titlu + "&tip=" + tip + "&oras=" + oras + "&studii=" + nivelStudii + "&cariera=" + nivelCariera + "&salariu=" + salariu + "&companie=" + descriereCompanie + "&job=" + descriereaJobului + "&candidat=" + candidatulIdeal);
+      xmlhttp.onload = function() {
+         console.log(this.response);
+         if (this.response == "true") {
+            window.location.href = "./EmployerPage.php"
+         } else {}
+      }
+      event.preventDefault();
 
 
-}
-function logout() {
-        var xmlhttp = new XMLHttpRequest();
+   }
 
-    xmlhttp.open("POST", "../Employer/ScriptsEmployer/Logout.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
-    xmlhttp.onload = function() {
+   function logout() {
+      var xmlhttp = new XMLHttpRequest();
 
-      window.location.href="../Employer/LoginRegisterEmployer.php"
-    }
-    console.log('logout successful');
-    }
+      xmlhttp.open("POST", "../Employer/ScriptsEmployer/Logout.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+      xmlhttp.onload = function() {
+
+         window.location.href = "../Employer/LoginRegisterEmployer.php"
+      }
+      console.log('logout successful');
+   }
 </script>
 <!-- Language Dropdown Menu -->
 <script>

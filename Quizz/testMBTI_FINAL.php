@@ -15,7 +15,8 @@ session_start();
     <!-- Navbar-->
     <nav class="flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary">
         <a href="../User/lista joburi/index.php" class="font-bold text-grey-800 md:text-2xl">
-            <p>it-jobs</p>
+            <img src='../img/Logo.png' alt='logo' class='inline w-12'></img>
+            <p class='inline'>jobs</p>
         </a>
 
         <div class="flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0">
@@ -178,19 +179,20 @@ session_start();
     }
 
     function goToCV() {
-    window.location.href = "../User/CVform.php";
-  }
+        window.location.href = "../User/CVform.php";
+    }
+
     function logout() {
         var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
-    xmlhttp.onload = function() {
+        xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+        xmlhttp.onload = function() {
 
-      window.location.href="../User/LoginRegister.php"
-    }
-    console.log('logout successful');
+            window.location.href = "../User/LoginRegister.php"
+        }
+        console.log('logout successful');
     }
 
     function checkAllInput() {
