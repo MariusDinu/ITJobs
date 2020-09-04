@@ -8,14 +8,13 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>it-jobs</title>
   <link rel="stylesheet" href="../../public/styles.css">
-</head>
-
-<body>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
   <!-- Navbar - Logged in -->
   <?php if (isset($_SESSION['user'])) {
     echo "<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
-    <a href='../lista joburi/index.php' class='font-bold text-grey-800 md:text-2xl'>
-      <p>it-jobs</p>
+    <a href='../lista joburi/index.php'>
+    <img src='../../img/Logo.png' alt='logo' class='inline w-12'></img>
+    <p class='inline'>jobs</p>
     </a>
 
     <div class='flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0'>
@@ -93,7 +92,8 @@ session_start();
     // Navbar - not logged in
     echo " <nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
         <a href='./index.php' class='font-bold text-grey-800 md:text-2xl'>
-            <p>it-jobs</p>
+        <img src='../../img/Logo.png' alt='logo' class='inline w-12'></img>
+    <p class='inline'>jobs</p>
         </a>
 
         <div class='flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0'>
@@ -196,58 +196,83 @@ session_start();
   </main>
 
 
-</body>
-<script>
-  function cauta() {
-    var job = document.getElementById("job").value;
-    var oras = document.getElementById("oras").value;
-    console.log(job);
-    console.log(oras);
-    var xmlhttp = new XMLHttpRequest();
+  </body>
+  <script>
+    function cauta() {
+      var job = document.getElementById("job").value;
+      var oras = document.getElementById("oras").value;
+      console.log(job);
+      console.log(oras);
+      var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "searchJobScript.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    if (oras === "Oras") {
-      oras = " ";
+      xmlhttp.open("POST", "searchJobScript.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      if (oras === "Oras") {
+        oras = " ";
+
+      }
+      xmlhttp.send("job=" + job + "&oras=" + oras);
+      xmlhttp.onload = function() {
+        console.log(this.response);
+
+      }
+    }
+
+    function logout() {
+      var xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send();
+      xmlhttp.onload = function() {
+
+        window.location.href = "../User/LoginRegister.php"
+      }
+      console.log('logout successful');
 
     }
-    xmlhttp.send("job=" + job + "&oras=" + oras);
-    xmlhttp.onload = function() {
-      console.log(this.response);
+  </script>
+  <!-- Language Dropdown Menu -->
+  <script>
+    const languageMenu = document.getElementById("languageMenu")
+    languageMenu.style.display = 'none';
+    document.getElementById("lang").addEventListener("click", () => {
+      languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
+    });
+  </script>
 
-    }
-  }
+  <!-- Test Dropdown Menu -->
+  <script>
+    const testMenu = document.getElementById("testMenu")
+    testMenu.style.display = 'none';
+    document.getElementById("tests").addEventListener("click", () => {
+      testMenu.style.display = testMenu.style.display === 'none' ? '' : 'none';
+    });
+  </script>
 
-  function logout() {
-    var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
-    xmlhttp.onload = function() {
-
-      window.location.href="../User/LoginRegister.php"
-    }
-    console.log('logout successful');
-
-  }
-</script>
-<!-- Language Dropdown Menu -->
-<script>
-  const languageMenu = document.getElementById("languageMenu")
-  languageMenu.style.display = 'none';
-  document.getElementById("lang").addEventListener("click", () => {
-    languageMenu.style.display = languageMenu.style.display === 'none' ? '' : 'none';
-  });
-</script>
-
-<!-- Test Dropdown Menu -->
-<script>
-  const testMenu = document.getElementById("testMenu")
-  testMenu.style.display = 'none';
-  document.getElementById("tests").addEventListener("click", () => {
-    testMenu.style.display = testMenu.style.display === 'none' ? '' : 'none';
-  });
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+  <script>
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#f08133",
+          "text": "#ffffff"
+        },
+        "button": {
+          "background": "#4062b2",
+          "text": "#ffffff"
+        }
+      },
+      "theme": "classic",
+      "type": "opt-in",
+      "content": {
+        "message": "Folosim cookie-uri pentru a-ți oferi cea mai bună experiență pe situl nostru.Poți afla mai multe despre cookie-uri ",
+        "allow": "Accept",
+        "deny": "Refuz",
+        "link": "aici",
+        "href": "Cookies.html"
+      }
+    });
+  </script>
 
 </html>
