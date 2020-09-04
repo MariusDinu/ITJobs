@@ -152,6 +152,7 @@ session_start();
       window.location.href="../User/LoginRegister.php"
     }
     console.log('logout successful');
+    event.preventDefault();
     }
 </script>
 

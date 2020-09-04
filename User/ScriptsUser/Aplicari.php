@@ -21,7 +21,7 @@ $sqlSearchCommandIDJob="SELECT ID_Job FROM `job/cv` WHERE `ID_CV`='$idCv'";
 $prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandIDJob);
 $prepare->execute();
 $arrayJobCV=$prepare->fetchAll();
-if(isset($arrayJobCV)){
+if(isset($arrayJobCV[0])){
 foreach($arrayJobCV as $item){
 
 $sqlSearchCommandJob="SELECT * FROM `job` WHERE `ID`='$item[0]'";

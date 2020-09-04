@@ -49,7 +49,7 @@
 
         <label class="inline-block mb-2 text-sm font-bold text-gray-700">Telefon</label>
         <span id="errorPhone" class="self-center hidden my-4 font-medium text-red-700"></span>
-        <input id="PhoneEmployerRegister" name="PhoneEmployerRegister" type="text" class="block w-full px-3 py-2 mb-3 placeholder-gray-600 bg-white border-2 border-gray-300 rounded-lg shadow-md text-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none" placeholder="(+40)" maxlength="9" pattern="[0-9]+" required>
+        <input id="PhoneEmployerRegister" name="PhoneEmployerRegister" type="text" class="block w-full px-3 py-2 mb-3 placeholder-gray-600 bg-white border-2 border-gray-300 rounded-lg shadow-md text-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none" placeholder="(+40)" onkeyup="checkPhone(this)" maxlength="9" pattern="[0-9]+" required>
 
         <label class="inline-block mb-2 text-sm font-bold text-gray-700">Website companie</label>
         <input id="inputSiteFirma" name="inputSiteFirma" type="text" class="block w-full px-3 py-2 mb-3 placeholder-gray-600 bg-white border-2 border-gray-300 rounded-lg shadow-md text-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none" required>
@@ -70,7 +70,7 @@
 
         <!--<input type="checkbox" class="check-box"><span>  I agree to the terms and conditions</span>-->
         <p id="errorRegister" class="self-center my-4 font-medium text-red-700"></p>
-        <button name="submitFirma" class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="registerEmployer()">Creaza cont</button>
+        <button name="submitFirma" type="button" class="px-4 py-2 mt-3 font-bold text-white transition-colors duration-300 ease-in rounded bg-ternary hover:bg-primary focus:outline-none focus:shadow-outline" onclick="registerEmployer()">Creaza cont</button>
       </form>
     </div>
 
@@ -260,11 +260,11 @@ if ($uploadOk == 0) {
     function checkEmail() {
       var emailScript = document.getElementById("EmailEmployerRegister").value;
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("POST", "../Employer/ScriptsEmployer/SearchEmployer.php", true);
+      xmlhttp.open("POST", "./ScriptsEmployer/SearchEmployer.php", true);
       xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       xmlhttp.send("email=" + emailScript);
       xmlhttp.onload = function() {
-
+console.log(this.response);
         if (this.response == "true") {
           document.getElementById("errorEmail").innerHTML = "";
           document.getElementById("errorEmail").value = 0;
@@ -279,10 +279,10 @@ if ($uploadOk == 0) {
 
     function checkPhone(current) {
       console.log(current.value.length);
-      if (current.value.length > 8) {
+      if (current.value.length < 10) {
         document.getElementById("errorPhone").innerHTML = "";
         document.getElementById("errorPhone").value = 0;
-      } else {
+      } else  {
         document.getElementById("errorPhone").innerHTML = "Acest numar nu este valid!";
         document.getElementById("errorPhone").value = 1;
       }
@@ -333,19 +333,16 @@ if ($uploadOk == 0) {
       var confirmPass = document.getElementById("errorPassword").value;
       var confirmEmail = document.getElementById("errorEmail").value;
       var confirmPhone = document.getElementById("errorPhone").value;
-
+console.log(confirmPhone);console.log(confirmEmail);
       if (confirmPass == 0 && confirmEmail == 0 && confirmPhone == 0) {
         setEmailPassPhone(email, password, phone);
         document.getElementById("errorRegister").innerHTML = "";
-        document.getElementById("loginRegisterBox").style.display = "none";
-        document.getElementById("checkCodePhone").style.display = "block";
-        document.getElementById('errorCode').innerHTML = "";
-
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", "./ScriptsEmployer/EmployerRegister.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
         xmlhttp.onload = function() {
+          console.log(this.response);
           window.location.href = "./LoginRegisterEmployer.php?succes=2";
         }
         uploadFile(email);

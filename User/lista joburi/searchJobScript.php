@@ -46,7 +46,7 @@ $lista->execute();
 foreach ($q->query($sql) as $row) {
 	//echo "<button id='".$row['ID']."'onclick='aplica(this)'>Aplica</button>";
     $sqlCommandCompare="SELECT * FROM `job/cv` WHERE ID_Job='".$row['ID']."' and ID_CV='$idCv'";
-    $response=$q->prepare($sql);	
+    $response=$q->prepare($sqlCommandCompare);	
     $response->execute();
     
     echo "
@@ -73,7 +73,7 @@ foreach ($q->query($sql) as $row) {
                         if($response->rowCount()==1)
                         {echo "<button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary'>Ai aplicat!</button>";}
                         else
-                        {echo "<button class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary' onclick='aplica(`".$_SESSION['user']."`,`".$row['ID']."`)'>Aplica acum</button>";}
+                        {echo "<button type='button' class='px-4 py-2 font-bold text-white rounded-full bg-ternary hover:bg-primary' onclick='aplica(`".$_SESSION['user']."`,`".$row['ID']."`)'>Aplica acum</button>";}
                    echo "</li></ul></div>";
 }
 

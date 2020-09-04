@@ -120,14 +120,15 @@ session_start();
   function logout() {
         var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "../Employer/ScriptsEmployer/Logout.php", true);
+    xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send();
     xmlhttp.onload = function() {
-
+console.log(this.response);
       window.location.href="../Employer/LoginRegisterEmployer.php"
     }
     console.log('logout successful');
+    event.preventDefault();
     }
 </script>
 

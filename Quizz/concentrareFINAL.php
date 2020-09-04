@@ -160,7 +160,7 @@ session_start();
             document.getElementById('errorTest').innerHTML = "";
             //script pentru trimiterea in baza de date
             console.log(rate);
-
+            
             if (rate < 10) {
                 window.alert("Iti este foarte greu sa te concentrezi cand factorii externi sunt intensi. Iti place sa lucrezi in liniste si armonie.");
             } else if (rate > 15) {

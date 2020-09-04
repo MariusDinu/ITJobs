@@ -1,8 +1,8 @@
 <?php
-include "..\DB.php";
+include "../../DB.php";
 $emailSearch=$_POST['email'];
 $DB=new DB();
-$sqlSearchCommand="SELECT Email FROM `angajator` WHERE Email='$emailSearch'";
+$sqlSearchCommand="SELECT E-mail FROM `angajator` WHERE E-mail='$emailSearch'";
 
 $prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommand);
 $prepare->execute();

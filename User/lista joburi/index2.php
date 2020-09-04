@@ -233,20 +233,20 @@ session_start();
         console.log(idJob);
         var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "../User/ScriptsUser/Aplica.php", true);
+    xmlhttp.open("POST", "../ScriptsUser/Aplica.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("userName="+user+"&idJob="+idJob);
     xmlhttp.onload = function() {
 
       console.log(this.response);
     }
-   
+    abc();
     }
 
     function logout() {
     var xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+    xmlhttp.open("POST", "../ScriptsUser/Logout.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send();
     xmlhttp.onload = function() {
