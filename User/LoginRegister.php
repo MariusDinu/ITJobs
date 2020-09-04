@@ -198,7 +198,7 @@
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("email=" + email + "&password=" + password + "&phone=" + phone);
             xmlhttp.onload = function() {
-                window.location.href = "LoginRegister.html";
+                window.location.href = "LoginRegister.php";
             }
         }
         event.preventDefault();
