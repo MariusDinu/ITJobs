@@ -164,7 +164,7 @@ session_start();
         <h1 class='m-5 text-4xl text-white'><div>" . $item['Titlu'] . "</div></h1>
         <div class='h-auto max-w-4xl p-5 mx-auto mt-5 bg-white border border-gray-400 rounded-bl-lg rounded-br-lg shadow appearance-none md:p-10'>
           <div id='form' class='flex flex-col'>
-            <div class='flex flex-wrap justify-center mb-10 bg-gray-200 rounded-lg'>
+            <div class='flex flex-wrap justify-center p-5 mb-10 bg-gray-200 rounded-lg'>
               <div class='flex flex-col items-center mr-5'>
                 <div class='flex items-center self-end mb-5'>
                   <label for='titlu' class='text-sm text-gray-700 sm:text-md'>Titlu job:</label>
@@ -222,13 +222,7 @@ session_start();
       </div>
     </div>
   </main>
-      ";
-  }
 
-
-  
-
-  ?>
   <script type="text/javascript">
     function aplica(user, idJob) {
       console.log(user);
