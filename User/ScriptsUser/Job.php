@@ -242,7 +242,7 @@ session_start();
     function logout() {
       var xmlhttp = new XMLHttpRequest();
 
-      xmlhttp.open("POST", "../ScriptsEmployer/Logout.php", true);
+      xmlhttp.open("POST", "../ScriptsUser/Logout.php", true);
       xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
       xmlhttp.send();
       xmlhttp.onload = function() {

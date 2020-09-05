@@ -7,7 +7,12 @@
   <title>Document</title>
   <link rel="stylesheet" href="../public/styles.css">
 </head>
-
+<nav class='flex flex-col items-center p-4 bg-white border-b-4 md:flex-row md:justify-around md:items-center text-primary font-primary border-primary'>
+    <a href='./ListaJoburiEmployer/index.php' class='font-bold text-grey-800 md:text-2xl'>
+    <img src='../img/Logo.png' alt='logo' class='inline w-12'></img>
+    <p class='inline'>jobs</p>
+    </a>
+    </nav>
 <body style="height: 100%; background-image: url(../img/Illustration-Angajator2.jpg)" class="bg-contain lg:bg-cover">
   <div class="flex flex-col items-center justify-center w-full h-full py-16 bg-transparent xl:w-1/2">
     <div id="loginRegisterBox" class="flex flex-col justify-center w-3/4 h-auto max-w-sm p-4 mx-auto overflow-scroll bg-white border border-gray-400 rounded-lg shadow appearance-none sm:p-10 md:w-1/2">

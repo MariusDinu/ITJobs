@@ -296,8 +296,19 @@ function goToCV() {
 
       event.preventDefault();
     }
+    function logout() {
+        var xmlhttp = new XMLHttpRequest();
 
+    xmlhttp.open("POST", "../User/ScriptsUser/Logout.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    xmlhttp.onload = function() {
 
+      window.location.href="../User/LoginRegister.php"
+    }
+    console.log('logout successful');
+    event.preventDefault();
+    }
     function deleteJob(current) {
       var aj = current.parentNode;
       console.log(aj.id);

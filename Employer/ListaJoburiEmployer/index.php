@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <html lang="en">
 
@@ -76,7 +77,7 @@ session_start();
         </a>
 
         <div class='flex flex-col items-center pt-5 md:flex-row md:mx-5 md:pt-0'>
-            <a href='#' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+            <a href='../LoginRegisterEmployer.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
                 <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 mx-2 user-group'>
                     <path d='M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z'>
                     </path>
@@ -84,14 +85,14 @@ session_start();
                 <span>Pentru angajatori</span>
             </a>
 
-            <a href='../User/LoginRegister.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
+            <a href='../../User/LoginRegister.php' class='flex items-center py-2 hover:text-secondary md:mx-5'>
                 <svg viewBox='0 0 20 20' fill='currentColor' class='w-5 h-5 mx-2 arrow-circle-right'>
                     <path fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z' clip-rule='evenodd'></path>
                 </svg>
                 <span>Intră în cont</span>
             </a>
 
-            <a href='../User/LoginRegister.php' class='py-2 md:mx-5'>
+            <a href='../../User/LoginRegister.php' class='py-2 md:mx-5'>
                 <span class='px-3 py-1 border-2 rounded-md border-secondary text-primary hover:bg-secondary'> Cont
                     nou</span>
             </a>

@@ -1,0 +1,50 @@
+private void Update() {
+      
+        if (Input.touchCount > 0)
+        {
+                touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    DragStart();
+                }
+                if (touch.phase == TouchPhase.Moved)
+                {
+                Dragging();
+                }
+                if (touch.phase == TouchPhase.Ended)
+                {
+                DragRelease();
+                }
+            }    
+    }
+    }
+ void DragStart() {
+        dragStartPos = Camera.main.ScreenToWorldPoint(touch.position);
+        dragStartPos.z = 0;
+        lr.positionCount = 1;
+ lr.SetPosition(0, dragStartPos); }
+ void Dragging() {
+        Vector3 draggingPosition = Camera.main.ScreenToWorldPoint(touch.position);
+        draggingPosition.z = 0;
+        lr.positionCount = 2;
+        lr.SetPosition(1, draggingPosition);
+}
+ void DragRelease() {
+     
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        lr.positionCount = 0;
+ Vector3 dragReleasePosition =  Camera.main.ScreenToWorldPoint(touch.position);
+        dragReleasePosition.z = 0;
+Vector3 clamp = Vector3.ClampMagnitude(force, maxDrag)*power;
+          rb.AddForce(clamp, ForceMode2D.Impulse);
+     
+        if ((int)dragReleasePosition.x > (int)dragStartPos.x)
+        {       
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 900, 0);
+        }
+
+        

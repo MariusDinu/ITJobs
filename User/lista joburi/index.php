@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <html lang="en">
 
@@ -226,7 +227,7 @@ session_start();
       xmlhttp.send();
       xmlhttp.onload = function() {
 
-        window.location.href = "../User/LoginRegister.php"
+        window.location.href = "../LoginRegister.php"
       }
       console.log('logout successful');
 

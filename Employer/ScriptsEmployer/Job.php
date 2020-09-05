@@ -125,20 +125,75 @@ session_start();
 
 
 <?php
-$job=$_GET['jobId'];
-include "../../DB.php";
-$DB=new DB();
+  $job = $_GET['jobId'];
+  include "../../DB.php";
+  $DB = new DB();
 
-$sqlSearchCommandJob="SELECT * FROM `job` WHERE `ID`='$job'";
-$prepare=$DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
-$prepare->execute();
-
-$arrayJob=$prepare->fetchAll();
-if($arrayJob!=null)
-{foreach($arrayJob as $item)
-echo "<div>".$item['ID']."</div>";}
-
-?>
+  $sqlSearchCommandJob = "SELECT * FROM `job` WHERE `ID`='$job'";
+  $prepare = $DB::obtine_conexiune()->prepare($sqlSearchCommandJob);
+  $prepare->execute();
+  $arrayJob = $prepare->fetchAll();
+  if ($arrayJob != null) {
+    foreach ($arrayJob as $item)
+      echo "
+      <main class='min-h-screen overflow-hidden bg-gray-200'>
+    <div class='w-10/12 h-auto max-w-4xl mx-auto'>
+      <div class='h-auto max-w-4xl mx-auto mt-5 mb-10 border border-gray-400 rounded-lg shadow appearance-none bg-ternary'>
+        <h1 class='m-5 text-4xl text-white'><div>" . $item['Titlu'] . "</div></h1>
+        <div class='h-auto max-w-4xl p-5 mx-auto mt-5 bg-white border border-gray-400 rounded-bl-lg rounded-br-lg shadow appearance-none md:p-10'>
+          <div id='form' class='flex flex-col'>
+            <div class='flex flex-wrap justify-center p-5 mb-10 bg-gray-200 rounded-lg'>
+              <div class='flex flex-col items-center mr-5'>
+                <div class='flex items-center self-end mb-5'>
+                  <label for='titlu' class='text-sm text-gray-700 sm:text-md'>Titlu job:</label>
+                  <p class='ml-2'>".$item['Titlu']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='tip' class='text-sm text-gray-700 sm:text-md'>Tip de job:</label>
+                  <p class='ml-2'>".$item['TipJob']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='oras' class='text-sm text-gray-700 sm:text-md'>Oras:</label>
+                  <p class='ml-2'>".$item['Oras']."</p>
+                </div>
+                
+              </div>
+              <div class='flex flex-col items-center sm:ml-5'>
+                <div class='flex items-center self-end mb-5'>
+                  <label for='studii' class='text-sm text-gray-700 sm:text-md'>Nivel de studii:</label>
+                  <p class='ml-2'>".$item['NivelStudii']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='cariera' class='text-sm text-gray-700 sm:text-md'>Nivel cariera:</label>
+                  <p class='ml-2'>".$item['NivelCariera']."</p>
+                </div>
+                
+                <div class='flex items-center self-end mb-5'>
+                  <label for='salariu' class='text-sm text-gray-700 sm:text-md'>Salariu:</label>
+                  <p class='ml-2'>".$item['Salariu']."</p>
+                </div>
+                
+              </div>
+            </div>
+            <div class='flex flex-col justify-evenly lg:flex-row'>
+              <div class='flex flex-col items-center justify-center mb-5'>
+                <label for='companie' class='block mb-3'>Descrierea companiei</label>
+                <textarea readonly id='companie' name='companie' class='w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500'>".$item['DescriereCompanie']."</textarea>
+              </div>
+              <div class='flex flex-col items-center justify-center mb-5'>
+                <label for='job' class='block mb-3'>Descrierea job-ului</label>
+                <textarea readonly id='job' name='job' class='w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500'>".$item['DescriereJob']."</textarea>
+              </div>
+              <div class='flex flex-col items-center justify-center mb-5'>
+                <label for='candidat' class='block mb-3'>Candidatul ideal</label>
+                <textarea readonly id='candidat' name='candidat' class='w-full h-40 px-4 py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none lg:w-64 border-primary focus:outline-none focus:bg-white focus:border-gray-500'>".$item['CandidatIdeal']."</textarea>
+              </div>
+            </div>
+                <button class='self-center inline-block w-48 px-4 py-2 mt-8 font-bold text-white transition-colors duration-300 ease-in rounded bg-secondary hover:bg-primary focus:outline-none focus:shadow-outline' onclick='aplica(`" . $_SESSION['user'] . "`,`" . $item['ID'] . "`)'>Aplica acum</button>";
+            }?>
 
 
 <script type="text/javascript">
